@@ -1,0 +1,1302 @@
+[
+  {
+    "model": "problems.problem",
+    "pk": 1,
+    "fields": {
+      "title": "Sum of Two Numbers",
+      "description": "Given two non-negative integers separated by a space, return their sum. This problem tests basic arithmetic operations and input parsing skills.",
+      "constraints": "Both numbers will be between 0 and 1000.",
+      "sample_input": "2 3",
+      "sample_output": "5",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 2,
+    "fields": {
+      "title": "Reverse a String",
+      "description": "Given a string consisting of alphabets, return the reversed string. This problem tests your string manipulation skills.",
+      "constraints": "The string will contain only lowercase alphabets.",
+      "sample_input": "hello",
+      "sample_output": "olleh",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 3,
+    "fields": {
+      "title": "Find Maximum Element",
+      "description": "Given a list of integers separated by spaces, return the maximum element in the list. This problem tests your ability to iterate over a collection and compare values.",
+      "constraints": "The list will contain between 1 and 100 integers, each between -1000 and 1000.",
+      "sample_input": "3 5 2 9 1",
+      "sample_output": "9",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 4,
+    "fields": {
+      "title": "Check Palindrome",
+      "description": "Given a string, determine whether it is a palindrome (reads the same backward as forward). This problem tests your string manipulation and logical reasoning.",
+      "constraints": "The string will be between 1 and 100 characters long and contain only alphanumeric characters.",
+      "sample_input": "racecar",
+      "sample_output": "True",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 5,
+    "fields": {
+      "title": "Fibonacci Sequence",
+      "description": "Given an integer n, return the nth Fibonacci number. The sequence starts with 0 and 1, and each subsequent number is the sum of the previous two numbers.",
+      "constraints": "n will be between 1 and 30.",
+      "sample_input": "7",
+      "sample_output": "13",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 6,
+    "fields": {
+      "title": "Problem #6",
+      "description": "Detailed description for Problem #6: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #6: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "6 7",
+      "sample_output": "13",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 7,
+    "fields": {
+      "title": "Problem #7",
+      "description": "Detailed description for Problem #7: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #7: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "7 8",
+      "sample_output": "15",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 8,
+    "fields": {
+      "title": "Problem #8",
+      "description": "Detailed description for Problem #8: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #8: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "8 9",
+      "sample_output": "17",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 9,
+    "fields": {
+      "title": "Problem #9",
+      "description": "Detailed description for Problem #9: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #9: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "9 10",
+      "sample_output": "19",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 10,
+    "fields": {
+      "title": "Problem #10",
+      "description": "Detailed description for Problem #10: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #10: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "10 11",
+      "sample_output": "21",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 11,
+    "fields": {
+      "title": "Problem #11",
+      "description": "Detailed description for Problem #11: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #11: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "11 12",
+      "sample_output": "23",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 12,
+    "fields": {
+      "title": "Problem #12",
+      "description": "Detailed description for Problem #12: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #12: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "12 13",
+      "sample_output": "25",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 13,
+    "fields": {
+      "title": "Problem #13",
+      "description": "Detailed description for Problem #13: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #13: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "13 14",
+      "sample_output": "27",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 14,
+    "fields": {
+      "title": "Problem #14",
+      "description": "Detailed description for Problem #14: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #14: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "14 15",
+      "sample_output": "29",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 15,
+    "fields": {
+      "title": "Problem #15",
+      "description": "Detailed description for Problem #15: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #15: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "15 16",
+      "sample_output": "31",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 16,
+    "fields": {
+      "title": "Problem #16",
+      "description": "Detailed description for Problem #16: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #16: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "16 17",
+      "sample_output": "33",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 17,
+    "fields": {
+      "title": "Problem #17",
+      "description": "Detailed description for Problem #17: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #17: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "17 18",
+      "sample_output": "35",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 18,
+    "fields": {
+      "title": "Problem #18",
+      "description": "Detailed description for Problem #18: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #18: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "18 19",
+      "sample_output": "37",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 19,
+    "fields": {
+      "title": "Problem #19",
+      "description": "Detailed description for Problem #19: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #19: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "19 20",
+      "sample_output": "39",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 20,
+    "fields": {
+      "title": "Problem #20",
+      "description": "Detailed description for Problem #20: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #20: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "20 21",
+      "sample_output": "41",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 21,
+    "fields": {
+      "title": "Problem #21",
+      "description": "Detailed description for Problem #21: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #21: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "21 22",
+      "sample_output": "43",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 22,
+    "fields": {
+      "title": "Problem #22",
+      "description": "Detailed description for Problem #22: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #22: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "22 23",
+      "sample_output": "45",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 23,
+    "fields": {
+      "title": "Problem #23",
+      "description": "Detailed description for Problem #23: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #23: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "23 24",
+      "sample_output": "47",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 24,
+    "fields": {
+      "title": "Problem #24",
+      "description": "Detailed description for Problem #24: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #24: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "24 25",
+      "sample_output": "49",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 25,
+    "fields": {
+      "title": "Problem #25",
+      "description": "Detailed description for Problem #25: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #25: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "25 26",
+      "sample_output": "51",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 26,
+    "fields": {
+      "title": "Problem #26",
+      "description": "Detailed description for Problem #26: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #26: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "26 27",
+      "sample_output": "53",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 27,
+    "fields": {
+      "title": "Problem #27",
+      "description": "Detailed description for Problem #27: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #27: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "27 28",
+      "sample_output": "55",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 28,
+    "fields": {
+      "title": "Problem #28",
+      "description": "Detailed description for Problem #28: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #28: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "28 29",
+      "sample_output": "57",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 29,
+    "fields": {
+      "title": "Problem #29",
+      "description": "Detailed description for Problem #29: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #29: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "29 30",
+      "sample_output": "59",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 30,
+    "fields": {
+      "title": "Problem #30",
+      "description": "Detailed description for Problem #30: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #30: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "30 31",
+      "sample_output": "61",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 31,
+    "fields": {
+      "title": "Problem #31",
+      "description": "Detailed description for Problem #31: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #31: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "31 32",
+      "sample_output": "63",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 32,
+    "fields": {
+      "title": "Problem #32",
+      "description": "Detailed description for Problem #32: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #32: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "32 33",
+      "sample_output": "65",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 33,
+    "fields": {
+      "title": "Problem #33",
+      "description": "Detailed description for Problem #33: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #33: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "33 34",
+      "sample_output": "67",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 34,
+    "fields": {
+      "title": "Problem #34",
+      "description": "Detailed description for Problem #34: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #34: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "34 35",
+      "sample_output": "69",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 35,
+    "fields": {
+      "title": "Problem #35",
+      "description": "Detailed description for Problem #35: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #35: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "35 36",
+      "sample_output": "71",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 36,
+    "fields": {
+      "title": "Problem #36",
+      "description": "Detailed description for Problem #36: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #36: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "36 37",
+      "sample_output": "73",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 37,
+    "fields": {
+      "title": "Problem #37",
+      "description": "Detailed description for Problem #37: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #37: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "37 38",
+      "sample_output": "75",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 38,
+    "fields": {
+      "title": "Problem #38",
+      "description": "Detailed description for Problem #38: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #38: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "38 39",
+      "sample_output": "77",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 39,
+    "fields": {
+      "title": "Problem #39",
+      "description": "Detailed description for Problem #39: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #39: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "39 40",
+      "sample_output": "79",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 40,
+    "fields": {
+      "title": "Problem #40",
+      "description": "Detailed description for Problem #40: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #40: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "40 41",
+      "sample_output": "81",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 41,
+    "fields": {
+      "title": "Problem #41",
+      "description": "Detailed description for Problem #41: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #41: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "41 42",
+      "sample_output": "83",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 42,
+    "fields": {
+      "title": "Problem #42",
+      "description": "Detailed description for Problem #42: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #42: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "42 43",
+      "sample_output": "85",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 43,
+    "fields": {
+      "title": "Problem #43",
+      "description": "Detailed description for Problem #43: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #43: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "43 44",
+      "sample_output": "87",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 44,
+    "fields": {
+      "title": "Problem #44",
+      "description": "Detailed description for Problem #44: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #44: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "44 45",
+      "sample_output": "89",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 45,
+    "fields": {
+      "title": "Problem #45",
+      "description": "Detailed description for Problem #45: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #45: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "45 46",
+      "sample_output": "91",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 46,
+    "fields": {
+      "title": "Problem #46",
+      "description": "Detailed description for Problem #46: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #46: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "46 47",
+      "sample_output": "93",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 47,
+    "fields": {
+      "title": "Problem #47",
+      "description": "Detailed description for Problem #47: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #47: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "47 48",
+      "sample_output": "95",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 48,
+    "fields": {
+      "title": "Problem #48",
+      "description": "Detailed description for Problem #48: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #48: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "48 49",
+      "sample_output": "97",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 49,
+    "fields": {
+      "title": "Problem #49",
+      "description": "Detailed description for Problem #49: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #49: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "49 50",
+      "sample_output": "99",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 50,
+    "fields": {
+      "title": "Problem #50",
+      "description": "Detailed description for Problem #50: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #50: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "50 51",
+      "sample_output": "101",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 51,
+    "fields": {
+      "title": "Problem #51",
+      "description": "Detailed description for Problem #51: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #51: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "51 52",
+      "sample_output": "103",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 52,
+    "fields": {
+      "title": "Problem #52",
+      "description": "Detailed description for Problem #52: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #52: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "52 53",
+      "sample_output": "105",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 53,
+    "fields": {
+      "title": "Problem #53",
+      "description": "Detailed description for Problem #53: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #53: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "53 54",
+      "sample_output": "107",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 54,
+    "fields": {
+      "title": "Problem #54",
+      "description": "Detailed description for Problem #54: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #54: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "54 55",
+      "sample_output": "109",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 55,
+    "fields": {
+      "title": "Problem #55",
+      "description": "Detailed description for Problem #55: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #55: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "55 56",
+      "sample_output": "111",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 56,
+    "fields": {
+      "title": "Problem #56",
+      "description": "Detailed description for Problem #56: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #56: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "56 57",
+      "sample_output": "113",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 57,
+    "fields": {
+      "title": "Problem #57",
+      "description": "Detailed description for Problem #57: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #57: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "57 58",
+      "sample_output": "115",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 58,
+    "fields": {
+      "title": "Problem #58",
+      "description": "Detailed description for Problem #58: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #58: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "58 59",
+      "sample_output": "117",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 59,
+    "fields": {
+      "title": "Problem #59",
+      "description": "Detailed description for Problem #59: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #59: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "59 60",
+      "sample_output": "119",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 60,
+    "fields": {
+      "title": "Problem #60",
+      "description": "Detailed description for Problem #60: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #60: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "60 61",
+      "sample_output": "121",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 61,
+    "fields": {
+      "title": "Problem #61",
+      "description": "Detailed description for Problem #61: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #61: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "61 62",
+      "sample_output": "123",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 62,
+    "fields": {
+      "title": "Problem #62",
+      "description": "Detailed description for Problem #62: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #62: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "62 63",
+      "sample_output": "125",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 63,
+    "fields": {
+      "title": "Problem #63",
+      "description": "Detailed description for Problem #63: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #63: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "63 64",
+      "sample_output": "127",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 64,
+    "fields": {
+      "title": "Problem #64",
+      "description": "Detailed description for Problem #64: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #64: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "64 65",
+      "sample_output": "129",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 65,
+    "fields": {
+      "title": "Problem #65",
+      "description": "Detailed description for Problem #65: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #65: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "65 66",
+      "sample_output": "131",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 66,
+    "fields": {
+      "title": "Problem #66",
+      "description": "Detailed description for Problem #66: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #66: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "66 67",
+      "sample_output": "133",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 67,
+    "fields": {
+      "title": "Problem #67",
+      "description": "Detailed description for Problem #67: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #67: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "67 68",
+      "sample_output": "135",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 68,
+    "fields": {
+      "title": "Problem #68",
+      "description": "Detailed description for Problem #68: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #68: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "68 69",
+      "sample_output": "137",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 69,
+    "fields": {
+      "title": "Problem #69",
+      "description": "Detailed description for Problem #69: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #69: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "69 70",
+      "sample_output": "139",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 70,
+    "fields": {
+      "title": "Problem #70",
+      "description": "Detailed description for Problem #70: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #70: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "70 71",
+      "sample_output": "141",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 71,
+    "fields": {
+      "title": "Problem #71",
+      "description": "Detailed description for Problem #71: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #71: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "71 72",
+      "sample_output": "143",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 72,
+    "fields": {
+      "title": "Problem #72",
+      "description": "Detailed description for Problem #72: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #72: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "72 73",
+      "sample_output": "145",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 73,
+    "fields": {
+      "title": "Problem #73",
+      "description": "Detailed description for Problem #73: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #73: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "73 74",
+      "sample_output": "147",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 74,
+    "fields": {
+      "title": "Problem #74",
+      "description": "Detailed description for Problem #74: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #74: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "74 75",
+      "sample_output": "149",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 75,
+    "fields": {
+      "title": "Problem #75",
+      "description": "Detailed description for Problem #75: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #75: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "75 76",
+      "sample_output": "151",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 76,
+    "fields": {
+      "title": "Problem #76",
+      "description": "Detailed description for Problem #76: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #76: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "76 77",
+      "sample_output": "153",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 77,
+    "fields": {
+      "title": "Problem #77",
+      "description": "Detailed description for Problem #77: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #77: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "77 78",
+      "sample_output": "155",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 78,
+    "fields": {
+      "title": "Problem #78",
+      "description": "Detailed description for Problem #78: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #78: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "78 79",
+      "sample_output": "157",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 79,
+    "fields": {
+      "title": "Problem #79",
+      "description": "Detailed description for Problem #79: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #79: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "79 80",
+      "sample_output": "159",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 80,
+    "fields": {
+      "title": "Problem #80",
+      "description": "Detailed description for Problem #80: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #80: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "80 81",
+      "sample_output": "161",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 81,
+    "fields": {
+      "title": "Problem #81",
+      "description": "Detailed description for Problem #81: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #81: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "81 82",
+      "sample_output": "163",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 82,
+    "fields": {
+      "title": "Problem #82",
+      "description": "Detailed description for Problem #82: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #82: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "82 83",
+      "sample_output": "165",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 83,
+    "fields": {
+      "title": "Problem #83",
+      "description": "Detailed description for Problem #83: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #83: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "83 84",
+      "sample_output": "167",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 84,
+    "fields": {
+      "title": "Problem #84",
+      "description": "Detailed description for Problem #84: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #84: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "84 85",
+      "sample_output": "169",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 85,
+    "fields": {
+      "title": "Problem #85",
+      "description": "Detailed description for Problem #85: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #85: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "85 86",
+      "sample_output": "171",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 86,
+    "fields": {
+      "title": "Problem #86",
+      "description": "Detailed description for Problem #86: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #86: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "86 87",
+      "sample_output": "173",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 87,
+    "fields": {
+      "title": "Problem #87",
+      "description": "Detailed description for Problem #87: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #87: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "87 88",
+      "sample_output": "175",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 88,
+    "fields": {
+      "title": "Problem #88",
+      "description": "Detailed description for Problem #88: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #88: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "88 89",
+      "sample_output": "177",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 89,
+    "fields": {
+      "title": "Problem #89",
+      "description": "Detailed description for Problem #89: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #89: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "89 90",
+      "sample_output": "179",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 90,
+    "fields": {
+      "title": "Problem #90",
+      "description": "Detailed description for Problem #90: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #90: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "90 91",
+      "sample_output": "181",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 91,
+    "fields": {
+      "title": "Problem #91",
+      "description": "Detailed description for Problem #91: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #91: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "91 92",
+      "sample_output": "183",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 92,
+    "fields": {
+      "title": "Problem #92",
+      "description": "Detailed description for Problem #92: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #92: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "92 93",
+      "sample_output": "185",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 93,
+    "fields": {
+      "title": "Problem #93",
+      "description": "Detailed description for Problem #93: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #93: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "93 94",
+      "sample_output": "187",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 94,
+    "fields": {
+      "title": "Problem #94",
+      "description": "Detailed description for Problem #94: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #94: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "94 95",
+      "sample_output": "189",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 95,
+    "fields": {
+      "title": "Problem #95",
+      "description": "Detailed description for Problem #95: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #95: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "95 96",
+      "sample_output": "191",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 96,
+    "fields": {
+      "title": "Problem #96",
+      "description": "Detailed description for Problem #96: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #96: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "96 97",
+      "sample_output": "193",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 97,
+    "fields": {
+      "title": "Problem #97",
+      "description": "Detailed description for Problem #97: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #97: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "97 98",
+      "sample_output": "195",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 98,
+    "fields": {
+      "title": "Problem #98",
+      "description": "Detailed description for Problem #98: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #98: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "98 99",
+      "sample_output": "197",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 99,
+    "fields": {
+      "title": "Problem #99",
+      "description": "Detailed description for Problem #99: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #99: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "99 100",
+      "sample_output": "199",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 100,
+    "fields": {
+      "title": "Problem #100",
+      "description": "Detailed description for Problem #100: Solve the following challenge to test your programming skills. In this problem, you are required to implement an algorithm that processes input data and returns the correct output based on specified constraints.",
+      "constraints": "Constraints for Problem #100: The input will be provided as a space-separated string of integers. Each integer will be in the range of 1 to 1000. Your solution should handle edge cases and be optimized for performance.",
+      "sample_input": "100 101",
+      "sample_output": "201",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  }
+]

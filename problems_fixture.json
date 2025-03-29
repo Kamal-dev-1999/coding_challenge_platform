@@ -1,0 +1,785 @@
+[
+  {
+    "model": "problems.problem",
+    "pk": 1,
+    "fields": {
+      "title": "Sum of Two Numbers",
+      "description": "Given two non-negative integers separated by a space, return their sum. For example, if the input is '2 3', the output should be '5'.",
+      "constraints": "0 <= a, b <= 1000",
+      "sample_input": "2 3",
+      "sample_output": "5",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 2,
+    "fields": {
+      "title": "Reverse a String",
+      "description": "Given a string consisting only of alphabets, return the reversed string. For example, input 'hello' should produce output 'olleh'.",
+      "constraints": "Input string length between 1 and 100; letters only.",
+      "sample_input": "hello",
+      "sample_output": "olleh",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 3,
+    "fields": {
+      "title": "Find Maximum in List",
+      "description": "Given a list of integers separated by spaces, return the maximum number in the list.",
+      "constraints": "List contains between 1 and 100 integers, each between -1000 and 1000.",
+      "sample_input": "3 5 2 9 1",
+      "sample_output": "9",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 4,
+    "fields": {
+      "title": "Check Palindrome",
+      "description": "Determine if a given string is a palindrome. A palindrome reads the same backward as forward.",
+      "constraints": "String length between 1 and 100, containing only alphanumeric characters.",
+      "sample_input": "racecar",
+      "sample_output": "True",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 5,
+    "fields": {
+      "title": "Fibonacci Number",
+      "description": "Given an integer n, return the nth Fibonacci number. The sequence starts with 0, 1, 1, 2, ...",
+      "constraints": "1 <= n <= 30",
+      "sample_input": "7",
+      "sample_output": "13",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 6,
+    "fields": {
+      "title": "Calculate Factorial",
+      "description": "Given a non-negative integer n, return its factorial. Factorial of n (n!) is the product of all positive integers less than or equal to n.",
+      "constraints": "0 <= n <= 20",
+      "sample_input": "5",
+      "sample_output": "120",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 7,
+    "fields": {
+      "title": "Prime Number Checker",
+      "description": "Determine if a given number is prime. Return 'True' if prime, otherwise 'False'.",
+      "constraints": "Input integer will be between 2 and 10000.",
+      "sample_input": "29",
+      "sample_output": "True",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 8,
+    "fields": {
+      "title": "Compute GCD",
+      "description": "Given two integers, return their Greatest Common Divisor (GCD).",
+      "constraints": "Integers are positive and less than 10000.",
+      "sample_input": "48 18",
+      "sample_output": "6",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 9,
+    "fields": {
+      "title": "Compute LCM",
+      "description": "Given two positive integers, return their Least Common Multiple (LCM).",
+      "constraints": "Integers are positive and less than 10000.",
+      "sample_input": "4 6",
+      "sample_output": "12",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 10,
+    "fields": {
+      "title": "Binary to Decimal",
+      "description": "Convert a binary number (given as a string) to its decimal representation.",
+      "constraints": "The binary string will be non-empty and contain only '0' and '1'.",
+      "sample_input": "1010",
+      "sample_output": "10",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 11,
+    "fields": {
+      "title": "Decimal to Binary",
+      "description": "Convert a given decimal number to its binary representation (as a string).",
+      "constraints": "0 <= number <= 1000",
+      "sample_input": "10",
+      "sample_output": "1010",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 12,
+    "fields": {
+      "title": "Sort Array of Integers",
+      "description": "Given a list of integers, return the sorted list in ascending order.",
+      "constraints": "List size between 1 and 100, each integer between -1000 and 1000.",
+      "sample_input": "3 1 2",
+      "sample_output": "1 2 3",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 13,
+    "fields": {
+      "title": "Find Second Largest Number",
+      "description": "Given a list of integers, find and return the second largest number in the list.",
+      "constraints": "The list contains at least two distinct integers.",
+      "sample_input": "10 5 8 12 7",
+      "sample_output": "10",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 14,
+    "fields": {
+      "title": "Count Vowels in a String",
+      "description": "Given a string, count and return the number of vowels (a, e, i, o, u) in the string.",
+      "constraints": "String length between 1 and 200, case insensitive.",
+      "sample_input": "Hello World",
+      "sample_output": "3",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 15,
+    "fields": {
+      "title": "Check for Anagram",
+      "description": "Given two strings, check if they are anagrams of each other. Two strings are anagrams if they contain the same characters in a different order.",
+      "constraints": "Strings will be of equal length and contain only lowercase alphabets.",
+      "sample_input": "listen silent",
+      "sample_output": "True",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 16,
+    "fields": {
+      "title": "String Compression",
+      "description": "Given a string, compress it by replacing sequences of the same character with the character followed by the count. For example, 'aaabb' becomes 'a3b2'.",
+      "constraints": "String length between 1 and 100; case sensitive.",
+      "sample_input": "aaabb",
+      "sample_output": "a3b2",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 17,
+    "fields": {
+      "title": "Unique Characters",
+      "description": "Given a string, determine whether all characters in the string are unique.",
+      "constraints": "String length between 1 and 100; assume ASCII characters.",
+      "sample_input": "abcdef",
+      "sample_output": "True",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 18,
+    "fields": {
+      "title": "Merge Two Sorted Arrays",
+      "description": "Given two sorted arrays, merge them into a single sorted array.",
+      "constraints": "Arrays are sorted in ascending order. Combined length up to 200.",
+      "sample_input": "Array1: 1 3 5, Array2: 2 4 6",
+      "sample_output": "1 2 3 4 5 6",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 19,
+    "fields": {
+      "title": "Find Missing Number",
+      "description": "Given an array containing n distinct numbers taken from 0 to n, find the one number that is missing from the array.",
+      "constraints": "Array length is n; numbers are in the range [0, n].",
+      "sample_input": "3 0 1",
+      "sample_output": "2",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 20,
+    "fields": {
+      "title": "Longest Substring Without Repeating Characters",
+      "description": "Given a string, find the length of the longest substring without repeating characters.",
+      "constraints": "String length between 0 and 1000.",
+      "sample_input": "abcabcbb",
+      "sample_output": "3",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 21,
+    "fields": {
+      "title": "Balanced Parentheses",
+      "description": "Given a string containing only the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. An input string is valid if: Open brackets are closed by the same type of brackets, and open brackets are closed in the correct order.",
+      "constraints": "String length between 1 and 100.",
+      "sample_input": "({[]})",
+      "sample_output": "True",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 22,
+    "fields": {
+      "title": "Sum of Array Elements",
+      "description": "Given an array of integers, return the sum of its elements.",
+      "constraints": "Array size between 1 and 100, each element between -1000 and 1000.",
+      "sample_input": "1 2 3 4 5",
+      "sample_output": "15",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 23,
+    "fields": {
+      "title": "Calculate Average",
+      "description": "Given a list of numbers, calculate and return the average value.",
+      "constraints": "List size between 1 and 100; numbers can be integers or floats.",
+      "sample_input": "2 4 6 8",
+      "sample_output": "5",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 24,
+    "fields": {
+      "title": "Area of a Circle",
+      "description": "Given the radius of a circle, calculate its area using the formula A = πr². Assume π = 3.14.",
+      "constraints": "Radius is a positive number not greater than 100.",
+      "sample_input": "5",
+      "sample_output": "78.5",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 25,
+    "fields": {
+      "title": "Temperature Converter (Celsius to Fahrenheit)",
+      "description": "Convert a temperature given in Celsius to Fahrenheit using the formula F = (C × 9/5) + 32.",
+      "constraints": "Temperature in Celsius will be between -100 and 100.",
+      "sample_input": "0",
+      "sample_output": "32",
+      "difficulty": "Easy",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 26,
+    "fields": {
+      "title": "Find the Median",
+      "description": "Given a list of numbers, find and return the median value. If the list has an even number of elements, return the average of the two medians.",
+      "constraints": "List size between 1 and 100; numbers can be integers or floats.",
+      "sample_input": "1 3 5",
+      "sample_output": "3",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 27,
+    "fields": {
+      "title": "Most Frequent Element",
+      "description": "Given a list of integers, return the element that appears most frequently. If there are multiple, return any one of them.",
+      "constraints": "List size between 1 and 100, each element between 0 and 100.",
+      "sample_input": "1 2 2 3 3 3 4",
+      "sample_output": "3",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 28,
+    "fields": {
+      "title": "Binary Search",
+      "description": "Given a sorted array of integers and a target value, implement binary search to find the index of the target. Return -1 if not found.",
+      "constraints": "Array is sorted in ascending order; size between 1 and 100.",
+      "sample_input": "Array: 1 3 5 7 9, Target: 7",
+      "sample_output": "3",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 29,
+    "fields": {
+      "title": "Matrix Transpose",
+      "description": "Given a matrix (2D array), return its transpose.",
+      "constraints": "Matrix dimensions up to 10x10.",
+      "sample_input": "[[1, 2], [3, 4]]",
+      "sample_output": "[[1, 3], [2, 4]]",
+      "difficulty": "Medium",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  {
+    "model": "problems.problem",
+    "pk": 30,
+    "fields": {
+      "title": "Spiral Order Traversal of Matrix",
+      "description": "Given a matrix, return all elements of the matrix in spiral order.",
+      "constraints": "Matrix dimensions up to 10x10.",
+      "sample_input": "[[1, 2, 3], [4, 5, 6], [7, 8, 9]]",
+      "sample_output": "[1, 2, 3, 6, 9, 8, 7, 4, 5]",
+      "difficulty": "Hard",
+      "created_at": "2025-03-29T00:00:00Z"
+    }
+  },
+  
+    {
+      "model": "problems.problem",
+      "pk": 33,
+      "fields": {
+        "title": "Anagram Checker",
+        "description": "Given two strings separated by a space, determine whether they are anagrams of each other. Two strings are anagrams if they contain the same characters in a different order.",
+        "constraints": "Both strings are of equal length and contain only lowercase letters.",
+        "sample_input": "listen silent",
+        "sample_output": "True",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 34,
+      "fields": {
+        "title": "Balanced Brackets",
+        "description": "Check if a string of brackets is balanced. A balanced string has matching opening and closing brackets in the correct order.",
+        "constraints": "The string contains only '(', ')', '{', '}', '[' and ']'.",
+        "sample_input": "({[]})",
+        "sample_output": "True",
+        "difficulty": "Hard",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 35,
+      "fields": {
+        "title": "Sort Integers",
+        "description": "Given a list of integers separated by spaces, return the list sorted in ascending order.",
+        "constraints": "List size between 1 and 100; integers range between -1000 and 1000.",
+        "sample_input": "5 3 8 1",
+        "sample_output": "1 3 5 8",
+        "difficulty": "Easy",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 36,
+      "fields": {
+        "title": "Find First Duplicate",
+        "description": "In a given list of integers, find the first duplicate element. If no duplicate exists, return -1.",
+        "constraints": "List size between 1 and 50; integers are between 1 and 100.",
+        "sample_input": "1 2 3 2 4",
+        "sample_output": "2",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 37,
+      "fields": {
+        "title": "Reverse Words in Sentence",
+        "description": "Given a sentence, reverse the order of words and return the resulting sentence.",
+        "constraints": "Sentence up to 200 characters; words separated by spaces.",
+        "sample_input": "Hello world from Django",
+        "sample_output": "Django from world Hello",
+        "difficulty": "Easy",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 38,
+      "fields": {
+        "title": "Longest Word Finder",
+        "description": "Find and return the longest word in a given sentence.",
+        "constraints": "Sentence up to 200 characters; words are separated by spaces.",
+        "sample_input": "I love programming",
+        "sample_output": "programming",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 39,
+      "fields": {
+        "title": "Word Count",
+        "description": "Count the number of words in a given sentence.",
+        "constraints": "Sentence up to 200 characters.",
+        "sample_input": "Hello world from Django",
+        "sample_output": "4",
+        "difficulty": "Easy",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 40,
+      "fields": {
+        "title": "Remove Vowels",
+        "description": "Remove all vowels from a given string and return the resulting string.",
+        "constraints": "String up to 100 characters; consider both uppercase and lowercase vowels.",
+        "sample_input": "Hello World",
+        "sample_output": "Hll Wrld",
+        "difficulty": "Easy",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 41,
+      "fields": {
+        "title": "Factorial Calculator",
+        "description": "Calculate the factorial of a given non-negative integer n.",
+        "constraints": "0 <= n <= 20.",
+        "sample_input": "5",
+        "sample_output": "120",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 42,
+      "fields": {
+        "title": "Nth Fibonacci Number",
+        "description": "Return the nth Fibonacci number. The sequence starts with 0, 1, 1, 2, ...",
+        "constraints": "1 <= n <= 30.",
+        "sample_input": "10",
+        "sample_output": "34",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 43,
+      "fields": {
+        "title": "Prime Checker",
+        "description": "Determine if a given number is prime.",
+        "constraints": "Number between 2 and 10000.",
+        "sample_input": "17",
+        "sample_output": "True",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 44,
+      "fields": {
+        "title": "Merge Sorted Arrays",
+        "description": "Merge two sorted arrays into a single sorted array.",
+        "constraints": "Arrays are sorted in ascending order; total elements up to 200.",
+        "sample_input": "Array1: 1 3 5, Array2: 2 4 6",
+        "sample_output": "1 2 3 4 5 6",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 45,
+      "fields": {
+        "title": "Binary Search",
+        "description": "Perform binary search on a sorted array to find the index of a target element. Return -1 if not found.",
+        "constraints": "Array sorted in ascending order; size between 1 and 100.",
+        "sample_input": "Array: 1 3 5 7 9, Target: 7",
+        "sample_output": "3",
+        "difficulty": "Hard",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 46,
+      "fields": {
+        "title": "GCD Calculator",
+        "description": "Calculate the Greatest Common Divisor (GCD) of two integers.",
+        "constraints": "Both numbers are between 1 and 1000.",
+        "sample_input": "48 18",
+        "sample_output": "6",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 47,
+      "fields": {
+        "title": "LCM Calculator",
+        "description": "Calculate the Least Common Multiple (LCM) of two integers.",
+        "constraints": "Both numbers are between 1 and 1000.",
+        "sample_input": "4 6",
+        "sample_output": "12",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 48,
+      "fields": {
+        "title": "Celsius to Fahrenheit Converter",
+        "description": "Convert a temperature from Celsius to Fahrenheit using the formula F = (C × 9/5) + 32.",
+        "constraints": "Temperature in Celsius between -100 and 100.",
+        "sample_input": "0",
+        "sample_output": "32",
+        "difficulty": "Easy",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 49,
+      "fields": {
+        "title": "Armstrong Number Checker",
+        "description": "Determine if a given number is an Armstrong number. An Armstrong number is equal to the sum of its own digits each raised to the power of the number of digits.",
+        "constraints": "Input number between 1 and 10000.",
+        "sample_input": "153",
+        "sample_output": "True",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 50,
+      "fields": {
+        "title": "Count Digits",
+        "description": "Count the number of digits in a given integer.",
+        "constraints": "Number is between 0 and 10^9.",
+        "sample_input": "12345",
+        "sample_output": "5",
+        "difficulty": "Easy",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 51,
+      "fields": {
+        "title": "Sum of Array Elements",
+        "description": "Calculate the sum of all elements in a list of integers.",
+        "constraints": "List size between 1 and 100; each integer between -1000 and 1000.",
+        "sample_input": "1 2 3 4 5",
+        "sample_output": "15",
+        "difficulty": "Easy",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 52,
+      "fields": {
+        "title": "Product of Array Elements",
+        "description": "Calculate the product of all elements in a list of integers.",
+        "constraints": "List size between 1 and 10; each integer between 1 and 100.",
+        "sample_input": "2 3 4",
+        "sample_output": "24",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 53,
+      "fields": {
+        "title": "Reverse an Array",
+        "description": "Reverse the order of elements in a given array.",
+        "constraints": "Array size between 1 and 100.",
+        "sample_input": "1 2 3 4 5",
+        "sample_output": "5 4 3 2 1",
+        "difficulty": "Easy",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 54,
+      "fields": {
+        "title": "Find Missing Number",
+        "description": "Given an array of size n containing numbers from 0 to n, find the missing number.",
+        "constraints": "Array has exactly one missing number in the range [0, n].",
+        "sample_input": "3 0 1",
+        "sample_output": "2",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 55,
+      "fields": {
+        "title": "Count Occurrences",
+        "description": "Count the number of times a given element appears in a list.",
+        "constraints": "List size between 1 and 100; elements are integers.",
+        "sample_input": "1 2 2 3 2 4, Element: 2",
+        "sample_output": "3",
+        "difficulty": "Easy",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 56,
+      "fields": {
+        "title": "Capitalize Each Word",
+        "description": "Given a sentence, capitalize the first letter of each word.",
+        "constraints": "Sentence up to 200 characters.",
+        "sample_input": "hello world",
+        "sample_output": "Hello World",
+        "difficulty": "Easy",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 57,
+      "fields": {
+        "title": "Remove Duplicates",
+        "description": "Remove duplicate elements from a list and return the unique elements in their original order.",
+        "constraints": "List size between 1 and 100; elements are integers.",
+        "sample_input": "1 2 2 3 4 3",
+        "sample_output": "1 2 3 4",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 58,
+      "fields": {
+        "title": "Intersection of Two Arrays",
+        "description": "Find the common elements between two arrays.",
+        "constraints": "Arrays size up to 50; elements are integers.",
+        "sample_input": "Array1: 1 2 3 4, Array2: 3 4 5 6",
+        "sample_output": "3 4",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 59,
+      "fields": {
+        "title": "Implement Queue using Stacks",
+        "description": "Simulate a queue using two stacks. Implement the enqueue and dequeue operations.",
+        "constraints": "Operations on integer elements.",
+        "sample_input": "Enqueue: 1, 2, 3; then Dequeue",
+        "sample_output": "1",
+        "difficulty": "Hard",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 60,
+      "fields": {
+        "title": "Implement Stack using Queues",
+        "description": "Simulate a stack using two queues. Implement the push and pop operations.",
+        "constraints": "Operations on integer elements.",
+        "sample_input": "Push: 1, 2, 3; then Pop",
+        "sample_output": "3",
+        "difficulty": "Hard",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 61,
+      "fields": {
+        "title": "Evaluate Postfix Expression",
+        "description": "Evaluate a postfix (Reverse Polish Notation) expression and return the result.",
+        "constraints": "Expression contains integers and operators (+, -, *, /) separated by spaces.",
+        "sample_input": "2 3 + 5 *",
+        "sample_output": "25",
+        "difficulty": "Hard",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    },
+    {
+      "model": "problems.problem",
+      "pk": 62,
+      "fields": {
+        "title": "Longest Common Prefix",
+        "description": "Given an array of strings, find the longest common prefix among them.",
+        "constraints": "Array size between 1 and 100, each string up to 100 characters.",
+        "sample_input": "flower flow flight",
+        "sample_output": "fl",
+        "difficulty": "Medium",
+        "created_at": "2025-03-29T00:00:00Z"
+      }
+    }
+  
+  
+]

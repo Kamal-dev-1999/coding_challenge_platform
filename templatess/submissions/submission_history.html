@@ -1,0 +1,214 @@
+{% extends "problems/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="coding-interface bg-dark text-light" style="min-height: 100vh;">
+  <div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4 px-3">
+      <h2 class="h4 mb-0">Submission History</h2>
+      <div class="text-muted small">
+        Total Submissions: {{ submissions|length }}
+      </div>
+    </div>
+
+    {% if submissions %}
+    <div class="row g-3 px-3">
+      <!-- Filters -->
+      <div class="col-12">
+        <div class="d-flex gap-3 align-items-center">
+          <span class="text-muted small">Filter by:</span>
+          <select id="statusFilter" class="form-select form-select-sm bg-black text-light border-dark">
+            <option value="all">All Statuses</option>
+            <option value="accepted">Accepted</option>
+            <option value="wrong-answer">Wrong Answer</option>
+            <option value="runtime-error">Runtime Error</option>
+          </select>
+          <select id="problemFilter" class="form-select form-select-sm bg-black text-light border-dark">
+            <option value="all">All Problems</option>
+            {% for problem in unique_problems %}
+            <option value="{{ problem|slugify }}">{{ problem }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <!-- Submissions List -->
+      <div class="col-12" id="submissionsContainer">
+        {% for submission in submissions %}
+        <div class="card bg-black border-dark mb-3 submission-card" 
+             data-status="{{ submission.result|slugify }}"
+             data-problem="{{ submission.problem.title|slugify }}">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div>
+                <h3 class="h6 mb-0">
+                  <a href="{% url 'problem-detail' submission.problem.id %}" 
+                     class="text-decoration-none text-success">
+                    {{ submission.problem.title }}
+                  </a>
+                </h3>
+                <span class="badge difficulty-{{ submission.problem.difficulty|lower }} text-uppercase small mt-1">
+                  {{ submission.problem.difficulty }}
+                </span>
+              </div>
+              <div class="text-end">
+                <span class="status-badge {{ submission.result|slugify }} small">
+                  {{ submission.result }}
+                </span>
+                <div class="text-muted small mt-1">
+                  {{ submission.submitted_at|timesince }} ago
+                </div>
+              </div>
+            </div>
+
+            <div class="code-preview bg-dark rounded p-2 position-relative">
+              <div class="line-numbers position-absolute start-0 ps-2 text-muted"></div>
+              <pre class="m-0 ps-4 text-light small">{{ submission.code|truncatechars:100 }}</pre>
+              <button class="btn btn-sm btn-outline-secondary view-code-btn" 
+                      data-full-code="{{ submission.code }}">
+                🌟 View Full Code
+              </button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% else %}
+    <div class="empty-state text-center py-5">
+      <div class="mb-3">
+        <i class="fas fa-file-code fa-3x text-muted"></i>
+      </div>
+      <h3 class="h5 text-muted mb-2">No Submissions Yet</h3>
+      <p class="text-muted small">Solve your first problem to see it appear here!</p>
+      <a href="{% url 'problem-list' %}" class="btn btn-sm btn-success">
+        Start Coding →
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Code Modal -->
+<div class="modal fade" id="codeModal" tabindex="-1" aria-labelledby="codeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content bg-black">
+      <div class="modal-header border-dark">
+        <h5 class="modal-title text-success" id="codeModalLabel">Submission Code</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <pre class="text-light" id="fullCodeContent"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .submission-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #2d2d2d !important;
+  }
+
+  .submission-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .accepted { background: rgba(110, 231, 183, 0.1); color: #7ee787; }
+  .wrong-answer { background: rgba(248, 81, 73, 0.1); color: #f85149; }
+  .runtime-error { background: rgba(255, 211, 61, 0.1); color: #ffd33d; }
+
+  .difficulty-easy { color: #7ee787; }
+  .difficulty-medium { color: #ffd33d; }
+  .difficulty-hard { color: #f85149; }
+
+  .code-preview {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    position: relative;
+  }
+
+  .line-numbers {
+    counter-reset: line;
+  }
+
+  .line-numbers::before {
+    content: counter(line);
+    counter-increment: line;
+    display: block;
+    color: #666;
+  }
+
+  .view-code-btn {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    padding: 2px 8px;
+    font-size: 12px;
+  }
+
+  .modal pre {
+    white-space: pre-wrap;
+    font-family: 'Fira Code', monospace;
+    padding: 1rem;
+    background: #1a1a1a;
+    border-radius: 4px;
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Filter functionality
+  const statusFilter = document.getElementById('statusFilter');
+  const problemFilter = document.getElementById('problemFilter');
+  const submissions = document.querySelectorAll('.submission-card');
+
+  function filterSubmissions() {
+    const selectedStatus = statusFilter.value;
+    const selectedProblem = problemFilter.value;
+
+    submissions.forEach(card => {
+      const cardStatus = card.dataset.status;
+      const cardProblem = card.dataset.problem;
+
+      const statusMatch = selectedStatus === 'all' || cardStatus === selectedStatus;
+      const problemMatch = selectedProblem === 'all' || cardProblem === selectedProblem;
+
+      card.style.display = (statusMatch && problemMatch) ? 'block' : 'none';
+    });
+  }
+
+  statusFilter.addEventListener('change', filterSubmissions);
+  problemFilter.addEventListener('change', filterSubmissions);
+
+  // Code modal functionality
+  const codeModal = new bootstrap.Modal(document.getElementById('codeModal'));
+  const codeContent = document.getElementById('fullCodeContent');
+
+  document.querySelectorAll('.view-code-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      codeContent.textContent = btn.dataset.fullCode;
+      codeModal.show();
+    });
+  });
+
+  // Initialize line numbers
+  document.querySelectorAll('.line-numbers').forEach(container => {
+    const code = container.nextElementSibling.textContent;
+    const lines = code.split('\n').length;
+    container.innerHTML = Array.from({length: lines}, (_, i) => i + 1).join('<br>');
+  });
+});
+</script>
+
+<!-- Include Bootstrap JS and Font Awesome -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+{% endblock %}

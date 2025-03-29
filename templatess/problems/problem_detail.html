@@ -1,0 +1,141 @@
+{% extends 'problems/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="coding-interface">
+  <div class="row g-0">
+    <!-- Problem Description Panel -->
+    <div class="col-md-5 p-4 bg-dark text-light" style="height: 100vh; overflow-y: auto;">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="h4 text-success mb-0">{{ problem.title }}</h2>
+        <span class="badge difficulty-{{ problem.difficulty|lower }} text-uppercase">
+          {{ problem.difficulty }}
+        </span>
+      </div>
+
+      <div class="problem-content text-light">
+        <div class="mb-5">
+          <h3 class="h6 text-muted mb-3">Description</h3>
+          <div class="code-description">{{ problem.description|linebreaks }}</div>
+        </div>
+
+        {% if problem.constraints %}
+        <div class="mb-5">
+          <h3 class="h6 text-muted mb-3">Constraints</h3>
+          <pre class="p-3 bg-black rounded-2">{{ problem.constraints }}</pre>
+        </div>
+        {% endif %}
+
+        <div class="row g-4">
+          {% if problem.sample_input %}
+          <div class="col-md-6">
+            <h3 class="h6 text-muted mb-3">Sample Input</h3>
+            <pre class="p-3 bg-black rounded-2">{{ problem.sample_input }}</pre>
+          </div>
+          {% endif %}
+          
+          {% if problem.sample_output %}
+          <div class="col-md-6">
+            <h3 class="h6 text-muted mb-3">Sample Output</h3>
+            <pre class="p-3 bg-black rounded-2">{{ problem.sample_output }}</pre>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Code Editor Panel -->
+    <div class="col-md-7 bg-black text-light" style="height: 100vh;">
+      <div class="d-flex flex-column h-100">
+        <div class="editor-toolbar px-4 py-2 border-bottom border-dark">
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="text-muted small">Python 3</span>
+            <div class="d-flex gap-3">
+              <a href="{% url 'problem-list' %}" class="text-decoration-none small">
+                ← Back to Problems
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <form class="flex-grow-1 d-flex flex-column" 
+              action="{% url 'submit-solution' problem.id %}" 
+              method="post">
+          {% csrf_token %}
+          <div class="code-editor flex-grow-1 position-relative">
+            <div class="line-numbers position-absolute top-0 start-0 p-3 text-muted"></div>
+            <textarea name="code" id="code" 
+              class="w-100 h-100 bg-black text-light p-3 ps-5 border-0"
+              placeholder="def solution(...):&#10;    # your code here"
+              spellcheck="false">{{ submission.code|default:'' }}</textarea>
+          </div>
+
+          <div class="editor-footer p-3 border-top border-dark">
+            <button type="submit" class="btn btn-success px-4 py-2">
+              <i class="fas fa-play me-2"></i>Run Code
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .code-editor {
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .line-numbers {
+    counter-reset: line;
+  }
+
+  .line-numbers::before {
+    content: counter(line);
+    counter-increment: line;
+    display: block;
+    width: 20px;
+    text-align: right;
+    margin-right: 10px;
+    color: #555;
+  }
+
+  textarea {
+    resize: none;
+    tab-size: 4;
+    white-space: pre;
+    overflow-wrap: normal;
+    overflow-x: auto;
+  }
+
+  textarea:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  pre {
+    color: #7ee787;
+    background: #161b22;
+    padding: 16px;
+    border-radius: 6px;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    white-space: pre-wrap;
+  }
+
+  .code-description {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #e6edf3;
+  }
+
+  .difficulty-easy { color: #7ee787; background: rgba(110, 231, 183, 0.1); }
+  .difficulty-medium { color: #ffd33d; background: rgba(255, 211, 61, 0.1); }
+  .difficulty-hard { color: #f85149; background: rgba(248, 81, 73, 0.1); }
+</style>
+
+<!-- Include Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+{% endblock %}

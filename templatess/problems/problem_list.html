@@ -1,0 +1,127 @@
+{% extends 'problems/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-5">
+  <h2 class="h4 fw-bold" style="color: var(--text-color)">Coding Challenges</h2>
+  <div class="text-muted small">{{ problems|length }} problems available</div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover align-middle">
+    <thead class="border-bottom" style="border-color: var(--border-color) !important">
+      <tr>
+        <th scope="col" style="width: 60%; color: var(--text-secondary)">Problem</th>
+        <th scope="col" style="color: var(--text-secondary)">Difficulty</th>
+        <th scope="col" style="color: var(--text-secondary)">Solve</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for problem in problems %}
+        <tr class="border-top" style="border-color: var(--border-color) !important">
+          <td>
+            <a href="{% url 'problem-detail' problem.id %}" 
+               class="text-decoration-none fw-medium hover-gradient"
+               style="color: var(--text-color)">
+              {{ problem.title }}
+            </a>
+          </td>
+          <td>
+            <span class="badge difficulty-{{ problem.difficulty|lower }}">
+              {{ problem.difficulty }}
+            </span>
+          </td>
+          <td>
+            <a href="{% url 'problem-detail' problem.id %}" 
+               class="btn btn-sm py-1 px-3 action-button">
+              Start →
+            </a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="3" class="text-center py-5" style="color: var(--text-muted)">
+            <div class="py-4">No problems available at the moment</div>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .hover-gradient:hover {
+    background: linear-gradient(90deg, 
+      var(--primary-color-10) 0%, 
+      var(--secondary-color-10) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .badge {
+    padding: 0.5em 0.8em;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .difficulty-easy { 
+    background-color: var(--difficulty-easy-bg); 
+    color: var(--difficulty-easy-text); 
+  }
+  .difficulty-medium { 
+    background-color: var(--difficulty-medium-bg); 
+    color: var(--difficulty-medium-text); 
+  }
+  .difficulty-hard { 
+    background-color: var(--difficulty-hard-bg); 
+    color: var(--difficulty-hard-text); 
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: var(--table-hover-bg);
+    transform: translateX(4px);
+    transition: all 0.2s ease;
+  }
+
+  .action-button {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    transition: all 0.2s ease;
+  }
+
+  .action-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  :root {
+    /* Add these new variables */
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --primary-color-10: #6366f110;
+    --secondary-color-10: #8b5cf610;
+    --table-hover-bg: #f1f5f9;
+    --difficulty-easy-bg: #dcfce7;
+    --difficulty-easy-text: #166534;
+    --difficulty-medium-bg: #fef9c3;
+    --difficulty-medium-text: #854d0e;
+    --difficulty-hard-bg: #fee2e2;
+    --difficulty-hard-text: #991b1b;
+  }
+  
+  [data-bs-theme="dark"] {
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --primary-color-10: #818cf810;
+    --secondary-color-10: #a78bfa10;
+    --table-hover-bg: #1e293b;
+    --difficulty-easy-bg: #1a4530;
+    --difficulty-easy-text: #4ade80;
+    --difficulty-medium-bg: #423407;
+    --difficulty-medium-text: #facc15;
+    --difficulty-hard-bg: #4a1a1a;
+    --difficulty-hard-text: #f87171;
+  }
+</style>
+{% endblock %}

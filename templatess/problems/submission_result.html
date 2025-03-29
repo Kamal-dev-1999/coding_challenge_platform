@@ -1,0 +1,143 @@
+{% extends 'problems/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="coding-interface bg-light text-light" style="min-height: 100vh;">
+  <div class="container-fluid">
+    <div class="row g-0">
+      <!-- Result Panel -->
+      <div class="col-md-6 p-4" style="background-color: #1e1e1e; height: 100vh; overflow-y: auto;">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+          <a href="{% url 'problem-detail' problem.id %}" class="btn btn-outline-secondary btn-sm">
+            ← Back to Problem
+          </a>
+          <span class="badge difficulty-{{ problem.difficulty|lower }}">
+            {{ problem.difficulty }}
+          </span>
+        </div>
+
+        <div class="result-container">
+          <h2 class="h4 mb-4 text-success">{{ problem.title }}</h2>
+          
+          <div class="status-card bg-black rounded p-4 mb-4">
+            <div class="d-flex align-items-center gap-3">
+              {% if result == "Accepted" %}
+              <i class="fas fa-check-circle text-success fs-5"></i>
+              {% elif result == "Wrong Answer" %}
+              <i class="fas fa-times-circle text-danger fs-5"></i>
+              {% else %}
+              <i class="fas fa-exclamation-triangle text-warning fs-5"></i>
+              {% endif %}
+              <div>
+                <span class="text-muted small">Submission Status:</span>
+                <h3 class="mb-0">{{ result }}</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="message-box bg-black rounded p-3 mb-5">
+            <pre class="text-info m-0">{{ message }}</pre>
+          </div>
+
+          <div class="loading-animation d-none" id="loading">
+            <div class="d-flex align-items-center gap-3 text-muted">
+              <div class="spinner-border spinner-border-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <small>Evaluating your solution...</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Code Panel -->
+      <div class="col-md-6 bg-black p-4" style="height: 100vh;">
+        <div class="code-header d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted small">Submitted Code</span>
+          <span class="badge bg-dark text-light">Python 3</span>
+        </div>
+        
+        <div class="code-container position-relative">
+          <div class="line-numbers position-absolute start-0 text-end pe-2 text-muted"></div>
+          <pre class="code-content m-0 p-3 ps-5">{{ code }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+    background-color: #1e1e1e;
+    font-family: 'Fira Code', monospace;
+  }
+
+  .status-card {
+    border: 1px solid #2d2d2d;
+  }
+
+  .message-box {
+    border: 1px solid #2d2d2d;
+    white-space: pre-wrap;
+  }
+
+  .code-container {
+    background-color: #000;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  .line-numbers {
+    counter-reset: line;
+    width: 40px;
+  }
+
+  .code-content {
+    counter-reset: line;
+    white-space: pre-wrap;
+    color: #d4d4d4;
+  }
+
+  .code-content::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 40px;
+    padding-right: 10px;
+    color: #666;
+    text-align: right;
+    position: absolute;
+    left: 0;
+  }
+
+  .loading-animation {
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+
+  .difficulty-easy { color: #7ee787; background: rgba(110, 231, 183, 0.1); }
+  .difficulty-medium { color: #ffd33d; background: rgba(255, 211, 61, 0.1); }
+  .difficulty-hard { color: #f85149; background: rgba(248, 81, 73, 0.1); }
+</style>
+
+<script>
+  // Simulate loading animation
+  document.addEventListener('DOMContentLoaded', function() {
+    const loading = document.getElementById('loading');
+    loading.classList.remove('d-none');
+    
+    // Hide loading after 1.5s (simulated)
+    setTimeout(() => {
+      loading.classList.add('d-none');
+    }, 1500);
+  });
+</script>
+
+<!-- Include Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+{% endblock %}

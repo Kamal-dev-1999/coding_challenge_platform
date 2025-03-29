@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}CodeCraft Platform{% endblock %}</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    :root {
+      --primary-color: #6366f1;
+      --secondary-color: #8b5cf6;
+      --bg-color: #ffffff;
+      --text-color: #1e293b;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+    }
+    [data-bs-theme="dark"] {
+      --primary-color: #818cf8;
+      --secondary-color: #a78bfa;
+      --bg-color: #0f172a;
+      --text-color: #f8fafc;
+      --card-bg: #1e293b;
+      --border-color: #334155;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s ease;
+    }
+    .header-bg {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    }
+    .nav-link-custom {
+      color: rgba(255, 255, 255, 0.9) !important;
+      transition: all 0.2s ease;
+      border-radius: 8px;
+      padding: 0.5rem 1rem !important;
+    }
+    .nav-link-custom:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-1px);
+    }
+    .main-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.25rem;
+      padding: 0.5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+    footer {
+      border-top: 1px solid var(--border-color);
+      background: var(--card-bg);
+    }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <header class="header-bg text-white">
+    <nav class="container d-flex flex-wrap justify-content-between align-items-center py-3">
+      <div class="d-flex align-items-center gap-4">
+        <h1 class="h4 mb-0 fw-bold">
+          <a href="{% url 'dashboard' %}" class="text-white text-decoration-none">CodeCraft</a>
+        </h1>
+        <div class="d-flex gap-2">
+          <a href="{% url 'problem-list' %}" class="nav-link nav-link-custom">Problems</a>
+          <a href="{% url 'submission-history' %}" class="nav-link nav-link-custom">Submissions</a>
+        </div>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <button class="theme-toggle" id="themeToggle">
+          <i class="fas fa-sun"></i>
+        </button>
+        {% if user.is_authenticated %}
+          <div class="text-white small">Welcome, {{ user.username }}</div>
+          <a href="{% url 'logout' %}" class="btn btn-outline-light btn-sm">Logout</a>
+        {% endif %}
+      </div>
+    </nav>
+  </header>
+
+  <main class="container my-5 flex-grow-1">
+    <div class="main-card p-4 p-lg-5">
+      {% if user.is_authenticated %}
+        {% block content %}{% endblock %}
+      {% else %}
+        <div class="text-center py-5">
+          <h2 class="text-danger">Access Denied</h2>
+          <p class="lead">You do not have access to this page. Please log in to continue.</p>
+          <a href="{% url 'auth-page' %}" class="btn btn-primary">Go to Login</a>
+        </div>
+      {% endif %}
+    </div>
+  </main>
+
+  <footer class="mt-auto py-4">
+    <div class="container text-center">
+      <p class="mb-0 text-sm text-muted">
+        &copy; 2025 CodeCraft Platform. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+  <script>
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.documentElement;
+    function toggleTheme() {
+      const isDark = body.getAttribute('data-bs-theme') === 'dark';
+      body.setAttribute('data-bs-theme', isDark ? 'light' : 'dark');
+      themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    body.setAttribute('data-bs-theme', savedTheme);
+    themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+    themeToggle.addEventListener('click', toggleTheme);
+    document.documentElement.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+  </script>
+</body>
+</html>

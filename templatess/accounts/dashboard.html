@@ -1,0 +1,292 @@
+{% extends 'problems/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-xxl py-5" style="max-width: 1600px;" data-bs-theme="auto">
+  <div class="container">
+    <!-- Header Section -->
+    <div class="mb-5">
+      <h1 class="display-6 fw-bold mb-2">Coding Analytics Dashboard</h1>
+      <p class="text-muted">Last login: {% now "F j, Y, g:i a" %}</p>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="card hover-scale">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="icon-container bg-success-subtle p-3 rounded-circle me-3">
+                <i class="fas fa-check-circle fa-2x text-success"></i>
+              </div>
+              <div>
+                <h6 class="text-uppercase text-muted mb-1">Accepted</h6>
+                <h2 class="mb-0">{{ accepted }}</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="card hover-scale">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="icon-container bg-danger-subtle p-3 rounded-circle me-3">
+                <i class="fas fa-times-circle fa-2x text-danger"></i>
+              </div>
+              <div>
+                <h6 class="text-uppercase text-muted mb-1">Wrong Answers</h6>
+                <h2 class="mb-0">{{ wrong }}</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card hover-scale">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="icon-container bg-warning-subtle p-3 rounded-circle me-3">
+                <i class="fas fa-exclamation-triangle fa-2x text-warning"></i>
+              </div>
+              <div>
+                <h6 class="text-uppercase text-muted mb-1">Runtime Errors</h6>
+                <h2 class="mb-0">{{ runtime }}</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title mb-4">Submission Distribution</h5>
+            <div class="chart-container">
+              <canvas id="submissionPieChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title mb-4">Submission Trends</h5>
+            <div class="chart-container">
+              <canvas id="submissionBarChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Include Chart.js via CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Detect current theme
+  const getTheme = () => document.documentElement.getAttribute('data-bs-theme') || 'light';
+
+  // Common chart configuration
+  const chartOptions = (theme) => ({
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { 
+        position: 'bottom',
+        labels: {
+          color: theme === 'dark' ? '#dee2e6' : '#212529',
+          font: { size: 14 },
+          padding: 20
+        }
+      },
+      tooltip: {
+        bodyColor: theme === 'dark' ? '#dee2e6' : '#212529',
+        titleColor: theme === 'dark' ? '#dee2e6' : '#212529',
+        backgroundColor: theme === 'dark' ? '#2b3035' : '#f8f9fa',
+        bodyFont: { size: 14 },
+        titleFont: { size: 16 }
+      }
+    }
+  });
+
+  // Initialize charts with theme
+  function initializeCharts() {
+    const theme = getTheme();
+    
+    // Destroy existing charts if they exist
+    if(window.pieChart) window.pieChart.destroy();
+    if(window.barChart) window.barChart.destroy();
+
+    // Pie Chart Configuration
+    const ctxPie = document.getElementById('submissionPieChart').getContext('2d');
+    window.pieChart = new Chart(ctxPie, {
+      type: 'doughnut',
+      data: {
+        labels: ['Accepted', 'Wrong Answer', 'Runtime Error'],
+        datasets: [{
+          data: [{{ accepted }}, {{ wrong }}, {{ runtime }}],
+          backgroundColor: [
+            'rgb(40, 167, 69)',
+            'rgb(220, 53, 69)',
+            'rgb(255, 193, 7)'
+          ],
+          borderColor: theme === 'dark' ? '#2b3035' : '#ffffff',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        ...chartOptions(theme),
+        plugins: {
+          ...chartOptions(theme).plugins,
+          title: {
+            display: true,
+            text: 'Submission Distribution',
+            color: theme === 'dark' ? '#dee2e6' : '#212529',
+            font: { size: 18 }
+          }
+        }
+      }
+    });
+
+    // Bar Chart Configuration
+    const ctxBar = document.getElementById('submissionBarChart').getContext('2d');
+    window.barChart = new Chart(ctxBar, {
+      type: 'bar',
+      data: {
+        labels: ['Accepted', 'Wrong Answer', 'Runtime Error'],
+        datasets: [{
+          label: 'Submissions',
+          data: [{{ accepted }}, {{ wrong }}, {{ runtime }}],
+          backgroundColor: [
+            'rgba(40, 167, 69, 0.8)',
+            'rgba(220, 53, 69, 0.8)',
+            'rgba(255, 193, 7, 0.8)'
+          ],
+          borderColor: [
+            'rgba(40, 167, 69, 1)',
+            'rgba(220, 53, 69, 1)',
+            'rgba(255, 193, 7, 1)'
+          ],
+          borderWidth: 1,
+          borderRadius: 8
+        }]
+      },
+      options: {
+        ...chartOptions(theme),
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { 
+              precision: 0,
+              color: theme === 'dark' ? '#dee2e6' : '#212529',
+              font: { size: 14 }
+            },
+            grid: {
+              color: theme === 'dark' ? '#495057' : '#e9ecef'
+            }
+          },
+          x: {
+            ticks: {
+              color: theme === 'dark' ? '#dee2e6' : '#212529',
+              font: { size: 14 }
+            },
+            grid: {
+              color: theme === 'dark' ? '#495057' : '#e9ecef'
+            }
+          }
+        },
+        plugins: {
+          ...chartOptions(theme).plugins,
+          title: {
+            display: true,
+            text: 'Submission Trends',
+            color: theme === 'dark' ? '#dee2e6' : '#212529',
+            font: { size: 18 }
+          }
+        }
+      }
+    });
+  }
+
+  // Initial chart creation
+  initializeCharts();
+
+  // Listen for theme changes
+  const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      if (mutation.attributeName === 'data-bs-theme') {
+        initializeCharts();
+      }
+    });
+  });
+
+  observer.observe(document.documentElement, { 
+    attributes: true 
+  });
+</script>
+
+<style>
+  :root {
+    --card-bg: #ffffff;
+    --card-border: #e9ecef;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --bg-color: #f8f9fa;
+  }
+
+  [data-bs-theme="dark"] {
+    --card-bg: #2b3035;
+    --card-border: #495057;
+    --text-primary: #f8f9fa;
+    --text-secondary: #adb5bd;
+    --bg-color: #212529;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+  }
+
+  .card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hover-scale:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .chart-container {
+    position: relative;
+    height: 350px;
+    padding: 1rem;
+  }
+
+  .card-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+  }
+
+  .text-muted {
+    color: var(--text-secondary) !important;
+  }
+
+  .icon-container {
+    background-color: var(--bg-color);
+  }
+</style>
+{% endblock %}

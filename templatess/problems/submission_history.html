@@ -1,0 +1,50 @@
+{% extends 'problems/base.html' %}
+{% load static %}
+
+{% block title %}Submission History{% endblock %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header bg-dark text-white">
+    <h2 class="mb-0">Your Submissions</h2>
+  </div>
+  <div class="card-body">
+    {% if submissions %}
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Problem</th>
+            <th>Result</th>
+            <th>Submitted At</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for submission in submissions|slice:":10" %}
+
+          <tr>
+            <td>{{ submission.problem.title }}</td>
+            <td>
+              {% if submission.result == "Accepted" %}
+                <span class="badge bg-success">{{ submission.result }}</span>
+              {% elif submission.result == "Wrong Answer" %}
+                <span class="badge bg-danger">{{ submission.result }}</span>
+              {% else %}
+                <span class="badge bg-warning text-dark">{{ submission.result }}</span>
+              {% endif %}
+            </td>
+            <td>{{ submission.submitted_at|date:"Y-m-d H:i" }}</td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="3">No submissions yet.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>You have no submissions yet.</p>
+    {% endif %}
+    <a href="{% url 'problem-list' %}" class="btn btn-primary">Back to Problem List</a>
+  </div>
+</div>
+{% endblock %}
