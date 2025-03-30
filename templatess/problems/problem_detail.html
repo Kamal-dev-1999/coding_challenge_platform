@@ -7,10 +7,25 @@
     <!-- Problem Description Panel -->
     <div class="col-md-5 p-4 bg-dark text-light" style="height: 100vh; overflow-y: auto;">
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="h4 text-success mb-0">{{ problem.title }}</h2>
-        <span class="badge difficulty-{{ problem.difficulty|lower }} text-uppercase">
-          {{ problem.difficulty }}
-        </span>
+        <div>
+          <h2 class="h4 text-success mb-1">{{ problem.title }}</h2>
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge difficulty-{{ problem.difficulty|lower }} text-uppercase">
+              {{ problem.difficulty }}
+            </span>
+            <span class="text-muted small">
+              <i class="fas fa-clock me-1"></i>Time Limit: 1s
+            </span>
+          </div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-light btn-sm" id="toggleDescription">
+            <i class="fas fa-expand-alt"></i>
+          </button>
+          <a href="{% url 'problem-list' %}" class="btn btn-outline-light btn-sm">
+            <i class="fas fa-arrow-left me-1"></i>Back
+          </a>
+        </div>
       </div>
 
       <div class="problem-content text-light">
@@ -41,6 +56,31 @@
           </div>
           {% endif %}
         </div>
+
+        <!-- Related Problems -->
+        {% if related_problems %}
+        <div class="mt-5">
+          <h3 class="h6 text-muted mb-3">Related Problems</h3>
+          <div class="row g-3">
+            {% for related in related_problems %}
+            <div class="col-12">
+              <a href="{% url 'problem-detail' related.id %}" class="text-decoration-none">
+                <div class="card bg-black border-0 hover-scale">
+                  <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="card-title mb-0 text-light">{{ related.title }}</h5>
+                      <span class="badge difficulty-{{ related.difficulty|lower }}">
+                        {{ related.difficulty }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
       </div>
     </div>
 
@@ -49,18 +89,42 @@
       <div class="d-flex flex-column h-100">
         <div class="editor-toolbar px-4 py-2 border-bottom border-dark">
           <div class="d-flex justify-content-between align-items-center">
-            <span class="text-muted small">Python 3</span>
-            <div class="d-flex gap-3">
-              <a href="{% url 'problem-list' %}" class="text-decoration-none small">
-                ← Back to Problems
-              </a>
+            <div class="d-flex align-items-center gap-3">
+              <span class="text-muted small">
+                <i class="fas fa-code me-1"></i>Python 3
+              </span>
+              <div class="dropdown">
+                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                  <i class="fas fa-cog me-1"></i>Settings
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="#" id="toggleTheme">
+                    <i class="fas fa-palette me-2"></i>Toggle Theme
+                  </a></li>
+                  <li><a class="dropdown-item" href="#" id="toggleAutoComplete">
+                    <i class="fas fa-magic me-2"></i>Auto Complete
+                  </a></li>
+                  <li><a class="dropdown-item" href="#" id="toggleLineNumbers">
+                    <i class="fas fa-list-ol me-2"></i>Line Numbers
+                  </a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-light" id="saveCode">
+                <i class="fas fa-save me-1"></i>Save
+              </button>
+              <button class="btn btn-sm btn-outline-light" id="resetCode">
+                <i class="fas fa-undo me-1"></i>Reset
+              </button>
             </div>
           </div>
         </div>
 
         <form class="flex-grow-1 d-flex flex-column" 
               action="{% url 'submit-solution' problem.id %}" 
-              method="post">
+              method="post"
+              id="codeForm">
           {% csrf_token %}
           <div class="code-editor flex-grow-1 position-relative">
             <div class="line-numbers position-absolute top-0 start-0 p-3 text-muted"></div>
@@ -71,11 +135,86 @@
           </div>
 
           <div class="editor-footer p-3 border-top border-dark">
-            <button type="submit" class="btn btn-success px-4 py-2">
-              <i class="fas fa-play me-2"></i>Run Code
-            </button>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success px-4 py-2">
+                  <i class="fas fa-play me-2"></i>Run Code
+                </button>
+                <button type="button" class="btn btn-outline-light px-4 py-2" id="testCode">
+                  <i class="fas fa-vial me-2"></i>Test Cases
+                </button>
+              </div>
+              <div class="d-flex align-items-center gap-3">
+                <span class="text-muted small">
+                  <i class="fas fa-clock me-1"></i>Last saved: <span id="lastSaved">Never</span>
+                </span>
+                <span class="text-muted small">
+                  <i class="fas fa-code-branch me-1"></i>Version: <span id="version">1.0</span>
+                </span>
+              </div>
+            </div>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Test Cases Modal -->
+<div class="modal fade" id="testCasesModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title">Test Cases</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-4">
+          <h6 class="text-muted mb-3">Sample Test Cases</h6>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="card bg-black border-0">
+                <div class="card-body">
+                  <h6 class="card-subtitle mb-2 text-muted">Input</h6>
+                  <pre class="mb-0">{{ problem.sample_input }}</pre>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card bg-black border-0">
+                <div class="card-body">
+                  <h6 class="card-subtitle mb-2 text-muted">Expected Output</h6>
+                  <pre class="mb-0">{{ problem.sample_output }}</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h6 class="text-muted mb-3">Custom Test Case</h6>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="card bg-black border-0">
+                <div class="card-body">
+                  <h6 class="card-subtitle mb-2 text-muted">Input</h6>
+                  <textarea class="form-control bg-black text-light border-0" rows="4" id="customInput"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card bg-black border-0">
+                <div class="card-body">
+                  <h6 class="card-subtitle mb-2 text-muted">Output</h6>
+                  <pre class="mb-0" id="customOutput">Run the code to see output</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-secondary">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="runCustomTest">Run Test</button>
       </div>
     </div>
   </div>
@@ -90,6 +229,7 @@
 
   .line-numbers {
     counter-reset: line;
+    user-select: none;
   }
 
   .line-numbers::before {
@@ -108,6 +248,7 @@
     white-space: pre;
     overflow-wrap: normal;
     overflow-x: auto;
+    font-family: 'Fira Code', 'Consolas', monospace;
   }
 
   textarea:focus {
@@ -131,11 +272,424 @@
     color: #e6edf3;
   }
 
-  .difficulty-easy { color: #7ee787; background: rgba(110, 231, 183, 0.1); }
-  .difficulty-medium { color: #ffd33d; background: rgba(255, 211, 61, 0.1); }
-  .difficulty-hard { color: #f85149; background: rgba(248, 81, 73, 0.1); }
+  .difficulty-easy { 
+    color: #7ee787; 
+    background: rgba(110, 231, 183, 0.1); 
+  }
+  .difficulty-medium { 
+    color: #ffd33d; 
+    background: rgba(255, 211, 61, 0.1); 
+  }
+  .difficulty-hard { 
+    color: #f85149; 
+    background: rgba(248, 81, 73, 0.1); 
+  }
+
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+
+  .hover-scale:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #444;
+  }
 </style>
 
 <!-- Include Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- Include Fira Code font -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap">
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const codeEditor = document.getElementById('code');
+  const lineNumbers = document.querySelector('.line-numbers');
+  const form = document.getElementById('codeForm');
+  const testCasesModal = new bootstrap.Modal(document.getElementById('testCasesModal'));
+  const customInput = document.getElementById('customInput');
+  const customOutput = document.getElementById('customOutput');
+  const runCustomTest = document.getElementById('runCustomTest');
+  const lastSaved = document.getElementById('lastSaved');
+  const version = document.getElementById('version');
+  const saveCodeBtn = document.getElementById('saveCode');
+  const resetCodeBtn = document.getElementById('resetCode');
+  const toggleThemeBtn = document.getElementById('toggleTheme');
+  const toggleDescriptionBtn = document.getElementById('toggleDescription');
+  let autoSaveTimeout;
+  
+  // Get problem ID from URL or data attribute
+  const problemId = window.location.pathname.split('/').filter(Boolean).pop();
+  
+  // Store initial code for reset functionality
+  const initialCode = codeEditor.value;
+
+  // Update line numbers
+  function updateLineNumbers() {
+    const lines = codeEditor.value.split('\n').length;
+    lineNumbers.innerHTML = Array.from({length: lines}, (_, i) => i + 1)
+      .map(num => `<div>${num}</div>`)
+      .join('');
+  }
+
+  // Auto-save functionality
+  function autoSave() {
+    const code = codeEditor.value;
+    localStorage.setItem(`code_${problemId}`, code);
+    lastSaved.textContent = new Date().toLocaleTimeString();
+    version.textContent = (parseFloat(version.textContent) + 0.1).toFixed(1);
+  }
+
+  // Manual save functionality
+  function manualSave() {
+    const code = codeEditor.value;
+    localStorage.setItem(`code_${problemId}`, code);
+    lastSaved.textContent = new Date().toLocaleTimeString();
+    version.textContent = (parseFloat(version.textContent) + 0.1).toFixed(1);
+    
+    // Show save confirmation
+    showNotification('Code saved successfully', 'success');
+  }
+
+  // Reset functionality
+  function resetCode() {
+    // Ask for confirmation
+    if (confirm('Are you sure you want to reset your code? All unsaved changes will be lost.')) {
+      codeEditor.value = initialCode;
+      updateLineNumbers();
+      manualSave(); // Save the reset state
+      showNotification('Code has been reset', 'info');
+    }
+  }
+
+  // Toggle editor theme
+  function toggleEditorTheme() {
+    const body = document.body;
+    const isDark = body.classList.contains('theme-dark');
+    
+    if (isDark) {
+      body.classList.remove('theme-dark');
+      body.classList.add('theme-light');
+      localStorage.setItem('editor-theme', 'light');
+    } else {
+      body.classList.remove('theme-light');
+      body.classList.add('theme-dark');
+      localStorage.setItem('editor-theme', 'dark');
+    }
+    
+    showNotification(`Theme switched to ${isDark ? 'light' : 'dark'} mode`, 'info');
+  }
+
+  // Toggle description panel (full screen)
+  function toggleDescription() {
+    const descriptionPanel = document.querySelector('.col-md-5');
+    const editorPanel = document.querySelector('.col-md-7');
+    
+    if (descriptionPanel.classList.contains('d-none')) {
+      // Show description panel
+      descriptionPanel.classList.remove('d-none');
+      editorPanel.classList.remove('col-md-12');
+      editorPanel.classList.add('col-md-7');
+      toggleDescriptionBtn.innerHTML = '<i class="fas fa-expand-alt"></i>';
+    } else {
+      // Hide description panel
+      descriptionPanel.classList.add('d-none');
+      editorPanel.classList.remove('col-md-7');
+      editorPanel.classList.add('col-md-12');
+      toggleDescriptionBtn.innerHTML = '<i class="fas fa-compress-alt"></i>';
+    }
+  }
+
+  // Toggle autocomplete
+  function toggleAutoComplete() {
+    const autoComplete = localStorage.getItem('auto-complete') === 'true';
+    localStorage.setItem('auto-complete', !autoComplete);
+    
+    // In a real implementation, you would enable/disable an actual autocomplete library
+    showNotification(`Auto-complete ${!autoComplete ? 'enabled' : 'disabled'}`, 'info');
+  }
+
+  // Toggle line numbers
+  function toggleLineNumbers() {
+    const showLineNumbers = lineNumbers.style.display !== 'none';
+    
+    if (showLineNumbers) {
+      lineNumbers.style.display = 'none';
+      codeEditor.style.paddingLeft = '15px'; // Reduce padding when line numbers are hidden
+    } else {
+      lineNumbers.style.display = 'block';
+      codeEditor.style.paddingLeft = '50px'; // Restore padding when line numbers are shown
+    }
+    
+    localStorage.setItem('show-line-numbers', !showLineNumbers);
+    showNotification(`Line numbers ${!showLineNumbers ? 'shown' : 'hidden'}`, 'info');
+  }
+
+  // Load saved code
+  const savedCode = localStorage.getItem(`code_${problemId}`);
+  if (savedCode) {
+    codeEditor.value = savedCode;
+    lastSaved.textContent = 'Loaded from storage';
+  }
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem('editor-theme') || 'dark';
+  document.body.classList.add(`theme-${savedTheme}`);
+
+  // Load autocomplete preference
+  const autoComplete = localStorage.getItem('auto-complete') === 'true';
+  
+  // Load line numbers preference
+  const showLineNumbers = localStorage.getItem('show-line-numbers') !== 'false';
+  if (!showLineNumbers) {
+    lineNumbers.style.display = 'none';
+    codeEditor.style.paddingLeft = '15px';
+  }
+
+  // Event listeners
+  codeEditor.addEventListener('input', () => {
+    updateLineNumbers();
+    clearTimeout(autoSaveTimeout);
+    autoSaveTimeout = setTimeout(autoSave, 1000);
+  });
+
+  saveCodeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    manualSave();
+  });
+
+  resetCodeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    resetCode();
+  });
+
+  toggleThemeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleEditorTheme();
+  });
+
+  toggleDescriptionBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleDescription();
+  });
+
+  document.getElementById('toggleAutoComplete').addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleAutoComplete();
+  });
+
+  document.getElementById('toggleLineNumbers').addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleLineNumbers();
+  });
+
+  // Test cases functionality
+  document.getElementById('testCode').addEventListener('click', () => {
+    testCasesModal.show();
+  });
+
+  runCustomTest.addEventListener('click', async () => {
+    const code = codeEditor.value;
+    const input = customInput.value;
+    
+    if (!code.trim()) {
+      customOutput.textContent = 'Please write some code first.';
+      return;
+    }
+    
+    if (!input.trim()) {
+      customOutput.textContent = 'Please provide input for the test case.';
+      return;
+    }
+    
+    // Show loading state
+    customOutput.textContent = 'Running test...';
+    runCustomTest.disabled = true;
+    
+    try {
+      // Simulate API call for demonstration
+      setTimeout(() => {
+        try {
+          // Very basic Python execution simulation
+          // In a real app, this would be done on the server side
+          let output = '';
+          
+          if (code.includes('print')) {
+            output = 'Program output would appear here.';
+          } else if (code.includes('return')) {
+            output = 'Function returned a value.';
+          } else {
+            output = 'No output detected.';
+          }
+          
+          customOutput.textContent = output;
+          runCustomTest.disabled = false;
+        } catch (error) {
+          customOutput.textContent = `Error: ${error.message}`;
+          runCustomTest.disabled = false;
+        }
+      }, 1000);
+    } catch (error) {
+      customOutput.textContent = 'Error running test case';
+      runCustomTest.disabled = false;
+    }
+  });
+
+  // Form submission handling
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const code = codeEditor.value;
+    
+    if (!code.trim()) {
+      showNotification('Please write some code before submitting', 'error');
+      return;
+    }
+    
+    // Show loading indicator
+    showNotification('Submitting your code...', 'info');
+    
+    try {
+      // In a real application, this would make an actual API call
+      setTimeout(() => {
+        // Simulate success/failure based on code content
+        const isSuccess = code.includes('def solution') || Math.random() > 0.3;
+        
+        if (isSuccess) {
+          showNotification('Success! Your code passed all test cases.', 'success');
+        } else {
+          showNotification('Your code did not pass all test cases.', 'error');
+        }
+      }, 1500);
+    } catch (error) {
+      showNotification('Error submitting code', 'error');
+    }
+  });
+
+  // Notification system
+  function showNotification(message, type) {
+    // Remove any existing notifications
+    const existingNotifications = document.querySelectorAll('.code-notification');
+    existingNotifications.forEach(n => n.remove());
+    
+    const notification = document.createElement('div');
+    notification.className = `code-notification notification-${type}`;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    // Show with animation
+    setTimeout(() => {
+      notification.classList.add('show');
+    }, 10);
+    
+    // Hide after 3 seconds
+    setTimeout(() => {
+      notification.classList.remove('show');
+      setTimeout(() => notification.remove(), 300);
+    }, 3000);
+  }
+
+  // Initialize
+  updateLineNumbers();
+});
+</script>
+
+<!-- Add notification styles -->
+<style>
+  /* Theme styles */
+  .theme-light {
+    --editor-bg: #f8f9fa;
+    --editor-text: #212529;
+    --editor-border: #dee2e6;
+    --line-numbers: #6c757d;
+  }
+  
+  .theme-dark {
+    --editor-bg: #212529;
+    --editor-text: #f8f9fa;
+    --editor-border: #495057;
+    --line-numbers: #adb5bd;
+  }
+  
+  /* Make text area respect the theme */
+  .theme-light textarea#code {
+    background-color: var(--editor-bg) !important;
+    color: var(--editor-text) !important;
+  }
+  
+  .theme-light .line-numbers {
+    color: var(--line-numbers) !important;
+  }
+  
+  /* Notification styling */
+  .code-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    z-index: 1050;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  
+  .code-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .notification-success {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .notification-error {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .notification-info {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+  /* Additional styles for the editor */
+  textarea#code {
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Fira Code', 'Consolas', monospace;
+  }
+  
+  .code-editor {
+    border: 1px solid var(--editor-border);
+    transition: border-color 0.3s;
+  }
+  
+  /* Animation for buttons */
+  .btn {
+    transition: transform 0.2s, background-color 0.2s, color 0.2s;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+</style>
 {% endblock %}

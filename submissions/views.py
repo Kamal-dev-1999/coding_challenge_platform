@@ -18,8 +18,48 @@ class SubmissionListAPIView(generics.ListAPIView):
         return Submission.objects.filter(user=self.request.user)
 
 # --- HTML view for submission history ---
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+from .models import Submission
+from problems.models import Problem
+from django.db.models import Q
 
+@login_required(login_url='auth-page')
 def submission_history(request):
-    submissions = Submission.objects.filter(user=request.user)
-    return render(request, 'submissions/submission_history.html', {'submissions': submissions})
+    token = request.session.get('access_token')
+    if not token:
+        return redirect('auth-page')
+    
+    # Get filter parameters
+    status_filter = request.GET.get('status', '')
+    problem_filter = request.GET.get('problem', '')
+    page = request.GET.get('page', 1)
+    per_page = 5  # Number of submissions per page
+    
+    # Get user's submissions
+    submissions = Submission.objects.filter(user=request.user).order_by('-submitted_at')
+    
+    # Apply filters if provided
+    if status_filter and status_filter != 'all':
+        submissions = submissions.filter(result__icontains=status_filter)
+    
+    if problem_filter and problem_filter != 'all':
+        submissions = submissions.filter(problem__title__icontains=problem_filter)
+    
+    # Get unique problems for the filter dropdown
+    problems = Problem.objects.filter(submission__user=request.user).distinct()
+    
+    # Paginate the submissions
+    paginator = Paginator(submissions, per_page)
+    page_obj = paginator.get_page(page)
+    
+    context = {
+        'submissions': page_obj,
+        'problems': problems,
+        'token': token,
+        'status_filter': status_filter,
+        'problem_filter': problem_filter,
+        'total_submissions': submissions.count(),
+    }
+    return render(request, 'submissions/submission_history.html', context)

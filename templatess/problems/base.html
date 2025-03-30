@@ -16,75 +16,290 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <style>
     :root {
-      --primary-color: #6366f1;
-      --secondary-color: #8b5cf6;
-      --bg-color: #ffffff;
+      --primary-color: #4a90e2;
+      --secondary-color: #67b26f;
+      --accent-color: #ff6b6b;
+      --bg-color: #f8f9fa;
       --text-color: #1e293b;
-      --card-bg: #ffffff;
-      --border-color: #e2e8f0;
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --border-color: rgba(0, 0, 0, 0.1);
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --gradient-primary: linear-gradient(135deg, #4a90e2 0%, #67b26f 100%);
+      --gradient-dark: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
     }
+
     [data-bs-theme="dark"] {
-      --primary-color: #818cf8;
-      --secondary-color: #a78bfa;
+      --primary-color: #67b26f;
+      --secondary-color: #4a90e2;
+      --accent-color: #ff6b6b;
       --bg-color: #0f172a;
       --text-color: #f8fafc;
-      --card-bg: #1e293b;
-      --border-color: #334155;
+      --card-bg: rgba(30, 41, 59, 0.9);
+      --border-color: rgba(255, 255, 255, 0.1);
+      --glass-bg: rgba(30, 41, 59, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.1);
     }
+
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-color);
+      background: var(--bg-color);
       color: var(--text-color);
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
     }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(74, 144, 226, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(103, 178, 111, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
     .header-bg {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      background: var(--gradient-primary);
+      position: relative;
+      overflow: hidden;
     }
+
+    .header-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.05)"/></svg>');
+      opacity: 0.1;
+    }
+
     .nav-link-custom {
       color: rgba(255, 255, 255, 0.9) !important;
-      transition: all 0.2s ease;
-      border-radius: 8px;
-      padding: 0.5rem 1rem !important;
-    }
-    .nav-link-custom:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      transform: translateY(-1px);
-    }
-    .main-card {
-      background: var(--card-bg);
+      transition: all 0.3s ease;
       border-radius: 12px;
-      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-      border: 1px solid var(--border-color);
+      padding: 0.75rem 1.25rem !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-link-custom::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      opacity: 0;
       transition: all 0.3s ease;
     }
+
+    .nav-link-custom:hover {
+      transform: translateY(-2px);
+      color: white !important;
+    }
+
+    .nav-link-custom:hover::before {
+      opacity: 1;
+    }
+
+    .main-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+      opacity: 0.5;
+    }
+
     .theme-toggle {
-      background: none;
-      border: none;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
       color: white;
       font-size: 1.25rem;
-      padding: 0.5rem;
+      padding: 0.75rem;
+      border-radius: 12px;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
     }
+
     .theme-toggle:hover {
-      transform: scale(1.1);
+      transform: scale(1.1) rotate(180deg);
+      background: var(--glass-bg);
     }
+
+    .btn-outline-light {
+      border-radius: 12px;
+      padding: 0.75rem 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-outline-light::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-light:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-light:hover::before {
+      opacity: 1;
+    }
+
     footer {
-      border-top: 1px solid var(--border-color);
       background: var(--card-bg);
+      border-top: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--gradient-primary);
+      opacity: 0.5;
+    }
+
+    /* Animated Background Elements */
+    .bg-element {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.1;
+      z-index: -1;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    .bg-element:nth-child(1) {
+      top: -150px;
+      left: -150px;
+      animation-delay: 0s;
+    }
+
+    .bg-element:nth-child(2) {
+      bottom: -150px;
+      right: -150px;
+      animation-delay: -5s;
+    }
+
+    .bg-element:nth-child(3) {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: -10s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+      25% {
+        transform: translate(50px, 50px);
+      }
+      50% {
+        transform: translate(0, 100px);
+      }
+      75% {
+        transform: translate(-50px, 50px);
+      }
+    }
+
+    /* Glass Card Effect */
+    .glass-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .nav-link-custom {
+        padding: 0.5rem 1rem !important;
+      }
+
+      .main-card {
+        border-radius: 16px;
+      }
+
+      .theme-toggle {
+        padding: 0.5rem;
+      }
     }
   </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
+  <!-- Animated Background Elements -->
+  <div class="bg-element"></div>
+  <div class="bg-element"></div>
+  <div class="bg-element"></div>
+
   <header class="header-bg text-white">
     <nav class="container d-flex flex-wrap justify-content-between align-items-center py-3">
       <div class="d-flex align-items-center gap-4">
         <h1 class="h4 mb-0 fw-bold">
-          <a href="{% url 'dashboard' %}" class="text-white text-decoration-none">CodeCraft</a>
+          <a href="{% url 'dashboard' %}" class="text-white text-decoration-none d-flex align-items-center">
+            <i class="fas fa-code me-2"></i>CodeCraft
+          </a>
         </h1>
         <div class="d-flex gap-2">
-          <a href="{% url 'problem-list' %}" class="nav-link nav-link-custom">Problems</a>
-          <a href="{% url 'submission-history' %}" class="nav-link nav-link-custom">Submissions</a>
+          <a href="{% url 'problem-list' %}" class="nav-link nav-link-custom">
+            <i class="fas fa-tasks me-2"></i>Problems
+          </a>
+          <a href="{% url 'submission-history' %}" class="nav-link nav-link-custom">
+            <i class="fas fa-history me-2"></i>Submissions
+          </a>
         </div>
       </div>
       <div class="d-flex align-items-center gap-3">
@@ -92,8 +307,15 @@
           <i class="fas fa-sun"></i>
         </button>
         {% if user.is_authenticated %}
-          <div class="text-white small">Welcome, {{ user.username }}</div>
-          <a href="{% url 'logout' %}" class="btn btn-outline-light btn-sm">Logout</a>
+          <div class="text-white small d-flex align-items-center">
+            <i class="fas fa-user-circle me-2"></i>Welcome, <a href="{% url 'dashboard' %}" class="text-white text-decoration-none">{{ user.username }}</a>
+          </div>
+          <a href="{% url 'dashboard' %}" class="nav-link nav-link-custom">
+            <i class="fas fa-user me-2"></i>Profile
+          </a>
+          <a href="{% url 'logout' %}" class="btn btn-outline-light btn-sm">
+            <i class="fas fa-sign-out-alt me-2"></i>Logout
+          </a>
         {% endif %}
       </div>
     </nav>
@@ -104,10 +326,14 @@
       {% if user.is_authenticated %}
         {% block content %}{% endblock %}
       {% else %}
-        <div class="text-center py-5">
-          <h2 class="text-danger">Access Denied</h2>
-          <p class="lead">You do not have access to this page. Please log in to continue.</p>
-          <a href="{% url 'auth-page' %}" class="btn btn-primary">Go to Login</a>
+        <div class="text-center py-5 glass-card">
+          <h2 class="text-danger mb-4">
+            <i class="fas fa-lock me-2"></i>Access Denied
+          </h2>
+          <p class="lead mb-4">You do not have access to this page. Please log in to continue.</p>
+          <a href="{% url 'auth-page' %}" class="btn btn-primary">
+            <i class="fas fa-sign-in-alt me-2"></i>Go to Login
+          </a>
         </div>
       {% endif %}
     </div>
@@ -116,7 +342,7 @@
   <footer class="mt-auto py-4">
     <div class="container text-center">
       <p class="mb-0 text-sm text-muted">
-        &copy; 2025 CodeCraft Platform. All rights reserved.
+        <i class="fas fa-code me-2"></i>&copy; 2025 CodeCraft Platform. All rights reserved.
       </p>
     </div>
   </footer>
@@ -129,17 +355,41 @@
     // Theme Toggle Logic
     const themeToggle = document.getElementById('themeToggle');
     const body = document.documentElement;
+    
     function toggleTheme() {
       const isDark = body.getAttribute('data-bs-theme') === 'dark';
       body.setAttribute('data-bs-theme', isDark ? 'light' : 'dark');
       themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
       localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      
+      // Add rotation animation to theme toggle
+      themeToggle.style.transform = 'rotate(360deg)';
+      setTimeout(() => {
+        themeToggle.style.transform = 'rotate(0deg)';
+      }, 300);
     }
+
     const savedTheme = localStorage.getItem('theme') || 'light';
     body.setAttribute('data-bs-theme', savedTheme);
     themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
     themeToggle.addEventListener('click', toggleTheme);
+
+    // Smooth transition for theme changes
     document.documentElement.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+
+    // Add parallax effect to background elements
+    document.addEventListener('mousemove', (e) => {
+      const elements = document.querySelectorAll('.bg-element');
+      const mouseX = e.clientX / window.innerWidth;
+      const mouseY = e.clientY / window.innerHeight;
+
+      elements.forEach((element, index) => {
+        const speed = (index + 1) * 20;
+        const x = (mouseX - 0.5) * speed;
+        const y = (mouseY - 0.5) * speed;
+        element.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    });
   </script>
 </body>
 </html>

@@ -5,12 +5,12 @@
 
 {% block content %}
 <div class="card">
-  <div class="card-header bg-dark text-white">
+  <div class="card-header {% if theme == 'dark' %}bg-dark text-white{% else %}bg-light text-dark{% endif %}">
     <h2 class="mb-0">Your Submissions</h2>
   </div>
-  <div class="card-body">
+  <div class="card-body {% if theme == 'dark' %}bg-secondary text-white{% else %}bg-white text-dark{% endif %}">
     {% if submissions %}
-      <table class="table table-striped table-hover">
+      <table class="table table-striped table-hover {% if theme == 'dark' %}table-dark{% endif %}">
         <thead>
           <tr>
             <th>Problem</th>
@@ -20,7 +20,6 @@
         </thead>
         <tbody>
           {% for submission in submissions|slice:":10" %}
-
           <tr>
             <td>{{ submission.problem.title }}</td>
             <td>

@@ -7,23 +7,24 @@
 <div class="container-xxl py-5" style="max-width: 1600px;" data-bs-theme="auto">
   <div class="container">
     <!-- Header Section -->
-    <div class="mb-5">
-      <h1 class="display-6 fw-bold mb-2">Coding Analytics Dashboard</h1>
-      <p class="text-muted">Last login: {% now "F j, Y, g:i a" %}</p>
+    <div class="mb-5 text-center">
+      <h1 class="display-4 fw-bold mb-3 gradient-text">Coding Analytics Dashboard</h1>
+      <p class="text-muted fs-5">Welcome back! Last login: {% now "F j, Y, g:i a" %}</p>
     </div>
 
     <!-- Summary Cards -->
     <div class="row g-4 mb-5">
       <div class="col-md-4">
-        <div class="card hover-scale">
-          <div class="card-body">
+        <div class="card hover-scale glass-effect">
+          <div class="card-body p-4">
             <div class="d-flex align-items-center">
-              <div class="icon-container bg-success-subtle p-3 rounded-circle me-3">
+              <div class="icon-container bg-success-subtle p-4 rounded-circle me-4">
                 <i class="fas fa-check-circle fa-2x text-success"></i>
               </div>
               <div>
-                <h6 class="text-uppercase text-muted mb-1">Accepted</h6>
-                <h2 class="mb-0">{{ accepted }}</h2>
+                <h6 class="text-uppercase text-muted mb-2">Accepted</h6>
+                <h2 class="mb-0 fw-bold text-success">{{ accepted }}</h2>
+                <p class="text-muted mb-0 mt-1">Successful submissions</p>
               </div>
             </div>
           </div>
@@ -31,15 +32,16 @@
       </div>
       
       <div class="col-md-4">
-        <div class="card hover-scale">
-          <div class="card-body">
+        <div class="card hover-scale glass-effect">
+          <div class="card-body p-4">
             <div class="d-flex align-items-center">
-              <div class="icon-container bg-danger-subtle p-3 rounded-circle me-3">
+              <div class="icon-container bg-danger-subtle p-4 rounded-circle me-4">
                 <i class="fas fa-times-circle fa-2x text-danger"></i>
               </div>
               <div>
-                <h6 class="text-uppercase text-muted mb-1">Wrong Answers</h6>
-                <h2 class="mb-0">{{ wrong }}</h2>
+                <h6 class="text-uppercase text-muted mb-2">Wrong Answers</h6>
+                <h2 class="mb-0 fw-bold text-danger">{{ wrong }}</h2>
+                <p class="text-muted mb-0 mt-1">Incorrect submissions</p>
               </div>
             </div>
           </div>
@@ -47,15 +49,16 @@
       </div>
 
       <div class="col-md-4">
-        <div class="card hover-scale">
-          <div class="card-body">
+        <div class="card hover-scale glass-effect">
+          <div class="card-body p-4">
             <div class="d-flex align-items-center">
-              <div class="icon-container bg-warning-subtle p-3 rounded-circle me-3">
+              <div class="icon-container bg-warning-subtle p-4 rounded-circle me-4">
                 <i class="fas fa-exclamation-triangle fa-2x text-warning"></i>
               </div>
               <div>
-                <h6 class="text-uppercase text-muted mb-1">Runtime Errors</h6>
-                <h2 class="mb-0">{{ runtime }}</h2>
+                <h6 class="text-uppercase text-muted mb-2">Runtime Errors</h6>
+                <h2 class="mb-0 fw-bold text-warning">{{ runtime }}</h2>
+                <p class="text-muted mb-0 mt-1">Execution errors</p>
               </div>
             </div>
           </div>
@@ -66,9 +69,9 @@
     <!-- Charts Section -->
     <div class="row g-4">
       <div class="col-lg-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title mb-4">Submission Distribution</h5>
+        <div class="card glass-effect">
+          <div class="card-body p-4">
+            <h5 class="card-title mb-4 fw-bold">Submission Distribution</h5>
             <div class="chart-container">
               <canvas id="submissionPieChart"></canvas>
             </div>
@@ -77,9 +80,9 @@
       </div>
 
       <div class="col-lg-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title mb-4">Submission Trends</h5>
+        <div class="card glass-effect">
+          <div class="card-body p-4">
+            <h5 class="card-title mb-4 fw-bold">Submission Trends</h5>
             <div class="chart-container">
               <canvas id="submissionBarChart"></canvas>
             </div>
@@ -237,36 +240,56 @@
 
 <style>
   :root {
-    --card-bg: #ffffff;
-    --card-border: #e9ecef;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --card-border: rgba(233, 236, 239, 0.5);
     --text-primary: #212529;
     --text-secondary: #6c757d;
     --bg-color: #f8f9fa;
+    --gradient-start: #4a90e2;
+    --gradient-end: #67b26f;
   }
 
   [data-bs-theme="dark"] {
-    --card-bg: #2b3035;
-    --card-border: #495057;
+    --card-bg: rgba(43, 48, 53, 0.9);
+    --card-border: rgba(73, 80, 87, 0.5);
     --text-primary: #f8f9fa;
     --text-secondary: #adb5bd;
     --bg-color: #212529;
+    --gradient-start: #67b26f;
+    --gradient-end: #4a90e2;
   }
 
   body {
-    background-color: var(--bg-color);
+    background: linear-gradient(135deg, var(--bg-color) 0%, #e9ecef 100%);
     color: var(--text-primary);
+    min-height: 100vh;
+  }
+
+  .gradient-text {
+    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .card {
     background-color: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 16px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .hover-scale:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   }
 
   .chart-container {
@@ -278,7 +301,20 @@
   .card-title {
     font-weight: 600;
     color: var(--text-primary);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .card-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+    border-radius: 3px;
   }
 
   .text-muted {
@@ -287,6 +323,25 @@
 
   .icon-container {
     background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover .icon-container {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    .container-xxl {
+      padding: 1rem;
+    }
+    
+    .card-body {
+      padding: 1.5rem !important;
+    }
+    
+    .icon-container {
+      padding: 1rem !important;
+    }
   }
 </style>
 {% endblock %}

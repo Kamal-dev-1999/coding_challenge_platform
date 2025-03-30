@@ -8,11 +8,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     :root {
-      --primary-color: #246dec;
-      --secondary-color: #4b9cff;
+      --primary-color: #4a90e2;
+      --secondary-color: #67b26f;
       --success-color: #28a745;
       --text-dark: #2d3748;
-      --gradient-blue: linear-gradient(135deg, #246dec 0%, #4b9cff 100%);
+      --gradient-primary: linear-gradient(135deg, #4a90e2 0%, #67b26f 100%);
+      --gradient-dark: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
     }
     
     body {
@@ -26,31 +27,49 @@
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
       box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+      padding: 1rem 0;
     }
 
     .navbar-brand {
       font-weight: 700;
       color: var(--primary-color) !important;
       letter-spacing: -0.5px;
+      font-size: 1.5rem;
     }
 
     .nav-link {
       font-weight: 500;
       color: var(--text-dark);
       transition: all 0.2s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
     }
 
     .nav-link:hover {
       color: var(--primary-color);
+      background: rgba(74, 144, 226, 0.1);
     }
 
     /* Modern Hero Section */
     .hero-section {
       padding: 8rem 0 6rem;
-      background: var(--gradient-blue);
+      background: var(--gradient-primary);
       color: white;
       clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
       margin-bottom: -5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.05)"/></svg>');
+      opacity: 0.1;
     }
 
     .hero-title {
@@ -58,53 +77,69 @@
       font-weight: 700;
       letter-spacing: -0.05em;
       margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-subtitle {
       font-size: 1.25rem;
       opacity: 0.9;
       margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
     }
 
     /* Features Section */
     .features-section {
       padding: 6rem 0;
+      background: #fff;
     }
 
     .feature-card {
       background: white;
-      border-radius: 16px;
+      border-radius: 20px;
       padding: 2rem;
       box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+      height: 100%;
     }
 
     .feature-card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
     }
 
     .feature-icon {
-      width: 56px;
-      height: 56px;
-      background: var(--gradient-blue);
-      border-radius: 12px;
+      width: 64px;
+      height: 64px;
+      background: var(--gradient-primary);
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1);
     }
 
     /* Enhanced Auth Modal */
     .auth-modal .modal-content {
-      border-radius: 20px;
+      border-radius: 24px;
       border: none;
       overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     }
 
     .auth-modal .modal-header {
       border-bottom: none;
       padding: 2rem 2rem 0;
+      background: var(--gradient-primary);
+      color: white;
     }
 
     .auth-modal .modal-title {
@@ -112,21 +147,78 @@
       font-weight: 700;
     }
 
+    .nav-tabs {
+      border: none;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
     .nav-tabs .nav-link {
-      font-size: 1rem;
+      border: none;
       padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 500;
+      color: var(--text-dark);
+      background: rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .nav-tabs .nav-link.active {
+      background: var(--gradient-primary);
+      color: white;
+    }
+
+    .form-control {
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
     }
 
     .input-group-text {
       background: #f8f9fa;
-      border-color: #e2e8f0;
+      border-color: rgba(0,0,0,0.1);
+      border-radius: 12px;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--gradient-primary);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
     }
 
     /* Footer */
     .main-footer {
-      background: var(--text-dark);
+      background: var(--gradient-dark);
       color: rgba(255,255,255,0.8);
       padding: 4rem 0;
+    }
+
+    .footer-link {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: white;
+      transform: translateX(5px);
     }
 
     @media (max-width: 768px) {
@@ -137,6 +229,10 @@
       .nav-tabs .nav-link {
         padding: 0.75rem 1rem;
       }
+
+      .feature-card {
+        margin-bottom: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -144,7 +240,9 @@
   <!-- Enhanced Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">CodeMaster</a>
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-code me-2"></i>CodeMaster
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -169,8 +267,12 @@
       <h1 class="hero-title">Transform Your Coding Journey</h1>
       <p class="hero-subtitle">Secure, enterprise-grade platform with cutting-edge authentication and collaboration tools</p>
       <div class="d-flex gap-3 justify-content-center">
-        <button class="btn btn-light btn-lg px-5" data-bs-toggle="modal" data-bs-target="#authModal">Start Coding Now</button>
-        <button class="btn btn-outline-light btn-lg px-5">Watch Demo</button>
+        <button class="btn btn-light btn-lg px-5" data-bs-toggle="modal" data-bs-target="#authModal">
+          <i class="fas fa-rocket me-2"></i>Start Coding Now
+        </button>
+        <button class="btn btn-outline-light btn-lg px-5">
+          <i class="fas fa-play-circle me-2"></i>Watch Demo
+        </button>
       </div>
     </div>
   </section>
@@ -184,8 +286,8 @@
             <div class="feature-icon">
               <i class="fas fa-shield-alt fa-lg"></i>
             </div>
-            <h4>Secure Authentication</h4>
-            <p>Military-grade encryption and multi-factor authentication to protect your work</p>
+            <h4 class="mb-3">Secure Authentication</h4>
+            <p class="text-muted mb-0">Military-grade encryption and multi-factor authentication to protect your work</p>
           </div>
         </div>
         <div class="col-md-4">
@@ -193,8 +295,8 @@
             <div class="feature-icon">
               <i class="fas fa-code fa-lg"></i>
             </div>
-            <h4>Real-time Collaboration</h4>
-            <p>Pair programming and code reviews with integrated version control</p>
+            <h4 class="mb-3">Real-time Collaboration</h4>
+            <p class="text-muted mb-0">Pair programming and code reviews with integrated version control</p>
           </div>
         </div>
         <div class="col-md-4">
@@ -202,135 +304,146 @@
             <div class="feature-icon">
               <i class="fas fa-rocket fa-lg"></i>
             </div>
-            <h4>Cloud Compilation</h4>
-            <p>Powerful cloud-based execution environment supporting 50+ languages</p>
+            <h4 class="mb-3">Cloud Compilation</h4>
+            <p class="text-muted mb-0">Powerful cloud-based execution environment supporting 50+ languages</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Auth Modal (Keep your existing modal content) -->
- <!-- Auth Modal -->
- <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="authModalLabel">Account Access</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="auth-container">
-          <ul class="nav nav-tabs mb-4" id="authTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button">
-                <i class="fas fa-sign-in-alt me-2"></i>Login
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup" type="button">
-                <i class="fas fa-user-plus me-2"></i>Sign Up
-              </button>
-            </li>
-          </ul>
-          <div class="tab-content" id="authTabContent">
-            <!-- Login Form -->
-            <div class="tab-pane fade show active" id="login" role="tabpanel">
-              <form id="loginForm" class="mb-3">
-                <div class="mb-3">
-                  <label for="loginUsername" class="form-label">Username</label>
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                    <input type="text" class="form-control" id="loginUsername" placeholder="Enter username" required />
+  <!-- Auth Modal -->
+  <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="authModalLabel">
+            <i class="fas fa-user-circle me-2"></i>Account Access
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="auth-container">
+            <ul class="nav nav-tabs mb-4" id="authTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button">
+                  <i class="fas fa-sign-in-alt me-2"></i>Login
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup" type="button">
+                  <i class="fas fa-user-plus me-2"></i>Sign Up
+                </button>
+              </li>
+            </ul>
+            <div class="tab-content" id="authTabContent">
+              <!-- Login Form -->
+              <div class="tab-pane fade show active" id="login" role="tabpanel">
+                <form id="loginForm" class="mb-3">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    <label for="loginUsername" class="form-label">Username</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                      <input type="text" class="form-control" id="loginUsername" placeholder="Enter username" required />
+                    </div>
                   </div>
-                </div>
-                <div class="mb-4">
-                  <label for="loginPassword" class="form-label">Password</label>
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                    <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" required />
+                  <div class="mb-4">
+                    <label for="loginPassword" class="form-label">Password</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                      <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" required />
+                    </div>
                   </div>
+                  <button type="submit" class="btn btn-primary w-100">
+                    <i class="fas fa-sign-in-alt me-2"></i>Continue to Dashboard
+                  </button>
+                </form>
+                <div class="text-center text-muted">
+                  <a href="#" class="text-decoration-none">Forgot password?</a>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Continue to Dashboard</button>
-              </form>
-              <div class="text-center text-muted">
-                <a href="#" class="text-decoration-none">Forgot password?</a>
+              </div>
+
+              <!-- Signup Form -->
+              <div class="tab-pane fade" id="signup" role="tabpanel">
+                <form id="signupForm" class="mb-3">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    <label for="signupUsername" class="form-label">Username</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                      <input type="text" class="form-control" id="signupUsername" placeholder="Choose username" required />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="signupEmail" class="form-label">Email</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                      <input type="email" class="form-control" id="signupEmail" placeholder="email@example.com" required />
+                    </div>
+                  </div>
+                  <div class="mb-4">
+                    <label for="signupPassword" class="form-label">Password</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                      <input type="password" class="form-control" id="signupPassword" placeholder="••••••••" required />
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-success w-100">
+                    <i class="fas fa-user-plus me-2"></i>Create Account
+                  </button>
+                </form>
               </div>
             </div>
-
-            <!-- Signup Form -->
-            <div class="tab-pane fade" id="signup" role="tabpanel">
-              <form id="signupForm" class="mb-3">
-                <div class="mb-3">
-                  <label for="signupUsername" class="form-label">Username</label>
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                    <input type="text" class="form-control" id="signupUsername" placeholder="Choose username" required />
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <label for="signupEmail" class="form-label">Email</label>
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                    <input type="email" class="form-control" id="signupEmail" placeholder="email@example.com" required />
-                  </div>
-                </div>
-                <div class="mb-4">
-                  <label for="signupPassword" class="form-label">Password</label>
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                    <input type="password" class="form-control" id="signupPassword" placeholder="••••••••" required />
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-success w-100">Create Account</button>
-              </form>
-            </div>
+            <div id="message" class="alert d-none mt-4" role="alert"></div>
           </div>
-          <div id="message" class="alert d-none mt-4" role="alert"></div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
   <!-- Professional Footer -->
   <footer class="main-footer">
     <div class="container">
       <div class="row g-4">
         <div class="col-md-4">
-          <h5 class="text-white mb-4">CodeMaster</h5>
+          <h5 class="text-white mb-4">
+            <i class="fas fa-code me-2"></i>CodeMaster
+          </h5>
           <p>Empowering developers worldwide with secure, scalable coding solutions.</p>
         </div>
         <div class="col-md-2">
           <h6 class="text-white mb-3">Product</h6>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-reset text-decoration-none">Features</a></li>
-            <li><a href="#" class="text-reset text-decoration-none">Security</a></li>
-            <li><a href="#" class="text-reset text-decoration-none">Enterprise</a></li>
+            <li class="mb-2"><a href="#" class="footer-link">Features</a></li>
+            <li class="mb-2"><a href="#" class="footer-link">Security</a></li>
+            <li class="mb-2"><a href="#" class="footer-link">Enterprise</a></li>
           </ul>
         </div>
         <div class="col-md-2">
           <h6 class="text-white mb-3">Company</h6>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-reset text-decoration-none">About</a></li>
-            <li><a href="#" class="text-reset text-decoration-none">Careers</a></li>
-            <li><a href="#" class="text-reset text-decoration-none">Contact</a></li>
+            <li class="mb-2"><a href="#" class="footer-link">About</a></li>
+            <li class="mb-2"><a href="#" class="footer-link">Careers</a></li>
+            <li class="mb-2"><a href="#" class="footer-link">Contact</a></li>
           </ul>
         </div>
         <div class="col-md-4">
           <h6 class="text-white mb-3">Stay Updated</h6>
           <div class="input-group">
             <input type="email" class="form-control" placeholder="Enter your email">
-            <button class="btn btn-primary">Subscribe</button>
+            <button class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i>
+            </button>
           </div>
         </div>
       </div>
-      <hr class="my-5">
+      <hr class="my-5 border-secondary">
       <p class="text-center mb-0">&copy; 2024 CodeMaster. All rights reserved.</p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Keep your existing JavaScript -->
   <script>
     // Helper function to display messages
     function showMessage(message, type = 'info') {
@@ -341,28 +454,34 @@
     }
 
     // Handle Login Form Submission
-    document.getElementById('loginForm').addEventListener('submit', async function(event) {
-      event.preventDefault();
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
       const username = document.getElementById('loginUsername').value;
       const password = document.getElementById('loginPassword').value;
+      const csrftoken = getCookie('csrftoken'); // Retrieve CSRF token from cookies
       
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/accounts/login/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password })
-        });
-        const data = await response.json();
-        if (response.ok) {
-          showMessage("Login successful! Token: " + data.access, "success");
-          window.location.href = "http://127.0.0.1:8000/api/accounts/dashboard/";
-        } else {
-          showMessage("Login failed: " + JSON.stringify(data), "danger");
-        }
+          const response = await fetch('/api/accounts/login/', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRFToken': csrftoken // Include the CSRF token header
+              },
+              body: JSON.stringify({ username, password })
+          });
+          
+          const data = await response.json();
+          if (response.ok) {
+              showMessage("Login successful! Redirecting...", "success");
+              setTimeout(() => window.location.href = '/api/accounts/dashboard', 1500);
+          } else {
+              showMessage("Login failed: " + JSON.stringify(data), "danger");
+          }
       } catch (error) {
-        showMessage("An error occurred: " + error, "danger");
+          showMessage("An error occurred: " + error, "danger");
       }
-    });
+  });
+  
 
     // Handle Signup Form Submission
     document.getElementById('signupForm').addEventListener('submit', async function(event) {
@@ -388,6 +507,22 @@
         showMessage("An error occurred: " + error, "danger");
       }
     });
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Check if this cookie string begins with the name we want
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+    
   </script>
 </body>
 </html>
