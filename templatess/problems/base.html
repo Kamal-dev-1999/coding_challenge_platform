@@ -325,6 +325,8 @@
     <div class="main-card p-4 p-lg-5">
       {% if user.is_authenticated %}
         {% block content %}{% endblock %}
+        {% block extra_js %}{% endblock %}
+
       {% else %}
         <div class="text-center py-5 glass-card">
           <h2 class="text-danger mb-4">

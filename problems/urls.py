@@ -7,6 +7,7 @@ from .views import (
     ProblemListAPIView,
     ProblemDetailAPIView,
     load_base_template,  # Import the base template loader
+    run_test,
 )
 
 urlpatterns = [
@@ -19,4 +20,5 @@ urlpatterns = [
     # API endpoints
     path('api/', ProblemListAPIView.as_view(), name='api-problem-list'),
     path('api/<int:pk>/', ProblemDetailAPIView.as_view(), name='api-problem-detail'),
+    path('api/run-test/<int:problem_id>/', run_test, name='run-test'),
 ]

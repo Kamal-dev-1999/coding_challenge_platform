@@ -122,39 +122,116 @@
         </div>
 
         <form class="flex-grow-1 d-flex flex-column" 
-              action="{% url 'submit-solution' problem.id %}" 
-              method="post"
-              id="codeForm">
-          {% csrf_token %}
-          <div class="code-editor flex-grow-1 position-relative">
-            <div class="line-numbers position-absolute top-0 start-0 p-3 text-muted"></div>
-            <textarea name="code" id="code" 
-              class="w-100 h-100 bg-black text-light p-3 ps-5 border-0"
-              placeholder="def solution(...):&#10;    # your code here"
-              spellcheck="false">{{ submission.code|default:'' }}</textarea>
-          </div>
+        action="{% url 'submit-solution' problem.id %}" 
+        method="post"
+        id="codeForm">
+    {% csrf_token %}
+    <div class="code-editor flex-grow-1 position-relative">
+      <div class="line-numbers position-absolute top-0 start-0 p-3 text-muted"></div>
+      <textarea name="code" id="code" 
+        class="w-100 h-100 bg-black text-light p-3 ps-5 border-0"
+        placeholder="def solution(...):&#10;    # your code here"
+        spellcheck="false">{{ submission.code|default:'' }}</textarea>
+    </div>
+  
+    <div class="editor-footer p-3 border-top border-dark">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-success px-4 py-2">
+            <i class="fas fa-play me-2"></i>Run Code
+          </button>
+          <!-- Set the data-test-input attribute to the problem's sample input -->
+          <button type="button" class="btn btn-outline-light px-4 py-2" 
+                  id="testCode" data-test-input="{{ problem.sample_input|escapejs }}">
+            <i class="fas fa-vial me-2"></i>Test Cases
+          </button>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <span class="text-muted small">
+            <i class="fas fa-clock me-1"></i>Last saved: <span id="lastSaved">Never</span>
+          </span>
+          <span class="text-muted small">
+            <i class="fas fa-code-branch me-1"></i>Version: <span id="version">1.0</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <!-- Hidden div to show test case results -->
+  <div id="testResults" class="mt-3"></div>
+  
 
-          <div class="editor-footer p-3 border-top border-dark">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-success px-4 py-2">
-                  <i class="fas fa-play me-2"></i>Run Code
-                </button>
-                <button type="button" class="btn btn-outline-light px-4 py-2" id="testCode">
-                  <i class="fas fa-vial me-2"></i>Test Cases
-                </button>
-              </div>
-              <div class="d-flex align-items-center gap-3">
-                <span class="text-muted small">
-                  <i class="fas fa-clock me-1"></i>Last saved: <span id="lastSaved">Never</span>
-                </span>
-                <span class="text-muted small">
-                  <i class="fas fa-code-branch me-1"></i>Version: <span id="version">1.0</span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </form>
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+  // Utility function to retrieve CSRF token from cookies
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let cookie of cookies) {
+        cookie = cookie.trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    const testCodeBtn = document.getElementById('testCode');
+    
+    testCodeBtn.addEventListener('click', function() {
+      const code = document.getElementById('code').value;
+      // Get test input from data attribute; may be empty
+      let testInput = this.getAttribute('data-test-input');
+      console.log("Test Input:", testInput);
+      
+      // Build the payload
+      const payload = {
+        code: code,
+        input: testInput
+      };
+      console.log("Payload to send:", payload);
+      
+      fetch("{% url 'run-test' problem.id %}", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": getCookie("csrftoken")
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Response from run_test:", data);
+        const resultsDiv = document.getElementById('testResults');
+        if(data.success) {
+          resultsDiv.innerHTML = `
+            <div class="alert alert-success">
+              <strong>Output:</strong> ${data.output}<br>
+              <strong>Stdout:</strong> ${data.stdout}<br>
+              <strong>Execution Time:</strong> ${data.execution_time.toFixed(4)}s
+            </div>`;
+        } else {
+          resultsDiv.innerHTML = `
+            <div class="alert alert-danger">
+              <strong>Error:</strong> ${data.error}
+            </div>`;
+        }
+      })
+      .catch(error => {
+        console.error("Error during fetch:", error);
+      });
+    });
+  });
+  </script>
+
+  
       </div>
     </div>
   </div>
@@ -553,34 +630,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Form submission handling
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const code = codeEditor.value;
-    
-    if (!code.trim()) {
-      showNotification('Please write some code before submitting', 'error');
-      return;
-    }
-    
-    // Show loading indicator
-    showNotification('Submitting your code...', 'info');
-    
-    try {
-      // In a real application, this would make an actual API call
-      setTimeout(() => {
-        // Simulate success/failure based on code content
-        const isSuccess = code.includes('def solution') || Math.random() > 0.3;
-        
-        if (isSuccess) {
-          showNotification('Success! Your code passed all test cases.', 'success');
-        } else {
-          showNotification('Your code did not pass all test cases.', 'error');
-        }
-      }, 1500);
-    } catch (error) {
-      showNotification('Error submitting code', 'error');
-    }
-  });
+
 
   // Notification system
   function showNotification(message, type) {
