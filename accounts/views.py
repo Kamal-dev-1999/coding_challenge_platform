@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions
 from rest_framework.response import Response
-from .seriazlizers import RegisterSerializer, LoginSerializer
+from .seriazlizers import RegisterSerializer, LoginSerializer, ProfileSerializer
 from accounts.models import CustomUser
 from django.contrib.auth import login
 from django.shortcuts import render
@@ -8,15 +8,21 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.db.models import Count
 import json
+from .models import Profile
+from django.contrib.auth import get_user_model
+from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.decorators import login_required
 from submissions.models import Submission
 
 def auth_page(request):
     return render(request, "accounts/auth.html")
 
+
+
 class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = [permissions.AllowAny]
+    authentication_classes = []  # Disable session authentication to avoid CSRF check
 
 class LoginView(generics.GenericAPIView):
     serializer_class = LoginSerializer
@@ -55,7 +61,28 @@ class LogoutView(generics.GenericAPIView):
         request.session.flush()
         return redirect('auth-page')  # Redirect to the auth page after logout
     
-    
+class ProfileView(generics.RetrieveUpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = ProfileSerializer
+    def get_object(self):
+        # Assuming each user has one profile
+        profile, created = Profile.objects.get_or_create(user=self.request.user)
+        return profile
+
+    def get(self, request, *args, **kwargs):
+        profile = self.get_object()
+        serializer = ProfileSerializer(profile)
+        acess_token = request.session.get('access_token')
+        # Include the access token in the response if needed    
+        return render(request, 'accounts/profile.html', {'profile': serializer.data, 'access_token': acess_token})
+
+    def put(self, request, *args, **kwargs):
+        profile = self.get_object()
+        serializer = ProfileSerializer(profile, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+
 @login_required
 def dashboard(request):
     user = request.user

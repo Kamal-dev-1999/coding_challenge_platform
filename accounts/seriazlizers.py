@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import  authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
-from accounts.models import CustomUser
+from accounts.models import CustomUser, Profile
+from django.contrib.auth import get_user_model
 
-User=CustomUser
-from django.contrib.auth.models import User
+User=get_user_model()
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
@@ -43,3 +43,16 @@ class LoginSerializer(serializers.Serializer):
             }
         raise serializers.ValidationError("Invalid credentials")
 
+class ProfileSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+    email = serializers.EmailField(source='user.email', read_only=True)
+    id = serializers.IntegerField(source='user.id', read_only=True)
+    class Meta:
+        model = Profile
+        fields = ['id','username', 'email', 'bio', 'created_at']
+
+    def update(self, instance, validated_data):
+        # Only update the bio; other fields (e.g., username/email) are read-only here.
+        instance.bio = validated_data.get('bio', instance.bio)
+        instance.save()
+        return instance

@@ -1,0 +1,173 @@
+{% extends 'problems/base.html' %}
+{% load static %}
+
+{% block title %}{{ profile.username }}'s Profile{% endblock %}
+
+{% block content %}
+<div class="container-xxl py-5" style="max-width: 1600px;" data-bs-theme="auto">
+  <div class="container">
+    <!-- Header Section -->
+    <div class="mb-5 text-center">
+      <h1 class="display-4 fw-bold mb-3 gradient-text">{{ profile.username }}'s Profile</h1>
+      <p class="text-muted fs-5">Member since {{ profile.created_at|date:"F Y" }}</p>
+    </div>
+
+    <!-- Profile & Stats Cards -->
+    <div class="row g-4 mb-5">
+      <!-- Main Profile Card -->
+      <div class="col-md-8">
+        <div class="card hover-scale glass-effect">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-4">
+              <div class="avatar-container bg-primary-subtle p-4 rounded-circle me-4" style="width:100px; height:100px;">
+                <div class="avatar-initials display-5 fw-bold text-primary">
+                  {{ profile.username|slice:":1"|upper }}
+                </div>
+              </div>
+              <div>
+                <h2 class="gradient-text mb-1">{{ profile.username }}</h2>
+                <p class="text-muted mb-0">{{ profile.email }}</p>
+              </div>
+            </div>
+            <div class="bio-section">
+              <h5 class="card-title mb-3">About</h5>
+              <p class="text-muted mb-0">
+                {{ profile.bio|default:"This user hasn't written a bio yet." }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Card -->
+      <div class="col-md-4">
+        <div class="card hover-scale glass-effect">
+          <div class="card-body p-4">
+            <h5 class="card-title mb-4">Activity Stats</h5>
+            <div class="activity-stats">
+              <div class="stat-item d-flex justify-content-between mb-3">
+                <span class="text-muted">Total Submissions</span>
+                <span class="fw-bold">{{ total }}</span>
+              </div>
+              <div class="stat-item d-flex justify-content-between mb-3">
+                <span class="text-muted">Accepted</span>
+                <span class="fw-bold">{{ accepted }}</span>
+              </div>
+              <div class="stat-item d-flex justify-content-between mb-3">
+                <span class="text-muted">Wrong Answers</span>
+                <span class="fw-bold">{{ wrong }}</span>
+              </div>
+              <div class="stat-item d-flex justify-content-between mb-3">
+                <span class="text-muted">Runtime Errors</span>
+                <span class="fw-bold">{{ runtime }}</span>
+              </div>
+              <div class="stat-item d-flex justify-content-between">
+                <span class="text-muted">Accuracy</span>
+                <span class="fw-bold">
+                  {% if total > 0 %}
+                    {% widthratio accepted total 100 as acc %}
+                    {{ acc }}%
+                  {% else %}
+                    N/A
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity Section (if available) -->
+    <div class="row g-4">
+        <div class="col-12">
+          <div class="card glass-effect">
+            <div class="card-body p-4">
+              <h5 class="card-title mb-4">Recent Activity</h5>
+              <div class="activity-list">
+                {% if recent_submissions %}
+                  <div class="d-flex flex-row overflow-auto">
+                    {% for submission in recent_submissions %}
+                      <div class="card me-3" style="min-width: 250px;">
+                        <div class="card-body">
+                          <h6 class="card-title">{{ submission.problem.title }}</h6>
+                          <p class="card-text mb-1">
+                            <strong>Result:</strong>
+                            {% if submission.result == "Accepted" %}
+                              <span class="badge bg-success">{{ submission.result }}</span>
+                            {% elif submission.result == "Wrong Answer" %}
+                              <span class="badge bg-danger">{{ submission.result }}</span>
+                            {% elif submission.result == "Runtime Error" %}
+                              <span class="badge bg-warning text-dark">{{ submission.result }}</span>
+                            {% elif submission.result == "Time Limit Exceeded" %}
+                              <span class="badge bg-secondary">{{ submission.result }}</span>
+                            {% else %}
+                              <span class="badge bg-info">{{ submission.result }}</span>
+                            {% endif %}
+                          </p>
+                          <p class="card-text">
+                            <small class="text-muted">
+                              Submitted: {{ submission.submitted_at|date:"M d, Y H:i" }}
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  <div class="activity-item text-muted text-center py-3">
+                    No recent activity to show
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+  </div>
+</div>
+
+<style>
+  .avatar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .avatar-initials {
+    font-size: 2rem;
+    user-select: none;
+  }
+  .bio-section {
+    border-top: 1px solid rgba(233,236,239,0.5);
+    padding-top: 1.5rem;
+  }
+  .activity-stats {
+    padding: 0 1rem;
+  }
+  .stat-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(233,236,239,0.5);
+  }
+  .stat-item:last-child {
+    border-bottom: none;
+  }
+  .activity-list {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 768px) {
+    .avatar-container {
+      width: 80px;
+      height: 80px;
+      padding: 1rem;
+    }
+    .display-4 {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+{% endblock %}

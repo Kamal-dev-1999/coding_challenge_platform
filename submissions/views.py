@@ -48,8 +48,8 @@ def submission_history(request):
         submissions = submissions.filter(problem__title__icontains=problem_filter)
     
     # Get unique problems for the filter dropdown
-    problems = Problem.objects.filter(submission__user=request.user).distinct()
-    
+    problems = Problem.objects.all()
+    print(problems)
     # Paginate the submissions
     paginator = Paginator(submissions, per_page)
     page_obj = paginator.get_page(page)

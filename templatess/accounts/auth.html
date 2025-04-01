@@ -489,11 +489,12 @@
       const username = document.getElementById('signupUsername').value;
       const email = document.getElementById('signupEmail').value;
       const password = document.getElementById('signupPassword').value;
-      
+      const csrftoken = getCookie('csrftoken');
       try {
         const response = await fetch('http://127.0.0.1:8000/api/accounts/signup/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
+          'X-CSRFToken': csrftoken,
           body: JSON.stringify({ username, email, password })
         });
         const data = await response.json();

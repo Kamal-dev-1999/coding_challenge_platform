@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'problems',
     'submissions',
+    'competition'
 ]
 
 MIDDLEWARE = [
